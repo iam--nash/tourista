@@ -21,41 +21,20 @@
  */
 
 module.exports.routes = {
-
-  ////////////////////////////////////////////////////////////
-  // Server-rendered HTML webpages
-  ////////////////////////////////////////////////////////////
   'GET /': 'PageController.showHomePage',
-  'GET /signup': {view: 'signup'},
-  //----here
-  'GET /login': {view: 'login'},
 
-
-  ////////////////////////////////////////////////////////////
-  // JSON API
-  ////////////////////////////////////////////////////////////
-
-  // User enrollment + authentication
+  //User API
   'POST /signup': 'UserController.signup',
   'PUT /login': 'UserController.login',
   '/logout': 'UserController.logout',
-
-  // Flag self as online
+  'GET /users': 'UserController.find',
+  'GET /users/:id': 'UserController.findOne',
+  'PUT /users/:id': 'UserController.update',
+  'DELETE /users/:id': 'UserController.destroy',
   'PUT /me/online': 'UserController.comeOnline',
-
-  // Update my profile
   'PUT /me': 'UserController.updateMyProfile',
 
-  // List users (also watch and subscribe to all)
-  'GET /users': 'UserController.find',
-
-  // Get user profile
-  'GET /users/:id': 'UserController.findOne',
-
-  // Update a user's profile data
-  'PUT /users/:id': 'UserController.update',
-
-  // Destroy a user
-  'DELETE /users/:id': 'UserController.destroy'
-
+  //Business API
+  'GET /businesses': 'BusinessController.find',
+  'GET /businesses/:id': 'BusinessController.findOne'
 };

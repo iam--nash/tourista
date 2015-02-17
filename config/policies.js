@@ -30,6 +30,11 @@ module.exports.policies = {
     findOne: ['isAdmin'],
     update: ['isAdmin'],
     destroy: ['isAdmin']
+  },
+
+  BusinessController:{
+
+    
   }
 
   

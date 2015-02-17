@@ -1,0 +1,23 @@
+<div class="container">
+	<h3>Show List of Businesses:</h3><hr/>
+	<div ng-show="businessList.errorMsg">
+	    <h5>Oops!</h5>
+	    <p>Looks like an error occurred.  Please try again later.</p>
+	    <code>
+	      {{businessList.errorMsg}}
+	    </code>
+  	</div>
+  	<div ng-show="businessList.loading">
+    <span class="overlord-loading-spinner fa fa-spinner"></span>
+    	<span>Loading businesses...</span>
+  	</div>
+  	<div ng-show="businessList.contents.length === 0">
+    	<span>No businesses yet.</span>
+  	</div>
+	<ul class="row" ng-show="!businessList.loading && businessList.contents.length > 0">
+		<li ng-repeat="business in businessList.contents">
+			<h4><a href="#/business/{{business.id}}">{{business.name}}</a></h4>
+			<p>{{business.street}}, {{business.city}}, {{business.province}}</p>
+		</li>
+	<ul>
+</div>

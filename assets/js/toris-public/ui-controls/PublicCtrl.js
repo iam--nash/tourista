@@ -1,10 +1,5 @@
 angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$location', 'toastr', function($scope, $http, $location, toastr) {
 
-  /////////////////////////////////////////////////////////////////////////////////
-  // When HTML is rendered...
-  /////////////////////////////////////////////////////////////////////////////////
-
-  // Set up initial state
   $scope.signupForm = {
     loading: false,
     topLevelErrorMessage: '',
@@ -16,42 +11,37 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     topLevelErrorMessage: ''
   };
 
+  //Business List - home.html
+  $scope.businessList = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
 
-
-
-  /////////////////////////////////////////////////////////////////////////////////
-  // DOM events:
-  /////////////////////////////////////////////////////////////////////////////////
+  //Business Profile - show-business.html
+  $scope.businessProfile = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
 
 
   $scope.submitLoginForm = function (){
-
-    // Set the loading state (i.e. show loading spinner)
     $scope.loginForm.loading = true;
-
-    // Wipe out errors since we are now loading from the server again and we aren't sure if
-    // the current form values that were entered are valid or not.
     $scope.loginForm.topLevelErrorMessage = null;
 
-    // Submit request to Sails.
     $http.put('/login', {
       email: $scope.loginForm.email,
       password: $scope.loginForm.password
     })
     .then(function onSuccess (){
-      // Refresh the page now that we've been logged in.
       window.location = '/';
     })
     .catch(function onError(sailsResponse) {
 
-      // Handle known error type(s).
-      //
       console.log(sailsResponse);
 
-      // Invalid username / password combination.
       if (sailsResponse.status === 400 || 404) {
-        // $scope.loginForm.topLevelErrorMessage = 'Invalid email/password combination.';
-        //
         toastr.error('Invalid email/password combination.', 'Error', {
           closeButton: true
         });
@@ -70,23 +60,10 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
 
 
   $scope.submitSignupForm = function (){
-
-    // // Check that passwords match
-    // if ($scope.signupForm.password !== $scope.signupForm.confirmPassword) {
-    //   // TODO: improve and finish client-side validation, probably using ng-form.
-    //   $scope.signupForm.topLevelErrorMessage = 'Please make sure the passwords match.';
-    //   return;
-    // }
-
-    // Set the loading state (i.e. show loading spinner)
     $scope.signupForm.loading = true;
-
-    // Wipe out errors since we are now loading from the server again and we aren't sure if
-    // the current form values that were entered are valid or not.
     $scope.signupForm.validationErrors = [];
     $scope.signupForm.topLevelErrorMessage = null;
 
-    // Submit request to Sails.
     $http.post('/signup', {
       name: $scope.signupForm.name,
       title: $scope.signupForm.title,
@@ -100,9 +77,6 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     .catch(function onError(sailsResponse) {
 
       console.log(sailsResponse);
-
-      // Handle known error type(s).
-      // var emailAddressAlreadyInUse = !sailsResponse.data && sailsResponse.data.error !== 'E_VALIDATION';
       var emailAddressAlreadyInUse = sailsResponse.status == 409;
       if (emailAddressAlreadyInUse) {
         toastr.error('That email address has already been taken, please try again.', 'Error');
@@ -124,5 +98,40 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
       $scope.signupForm.loading = false;
     });
   };
+
+  $scope.showAllBusiness = function (){
+      $scope.businessList.loading = true;
+      $scope.businessList.errorMsg = '';
+      
+      io.socket.get('/businesses', function (data, jwr) {
+        if (jwr.error) {
+          $scope.businessList.errorMsg = 'An unexpected error occurred: '+(data||jwr.status);
+          $scope.businessList.loading = false;
+          return;
+        }
+        $scope.businessList.contents = data;
+        $scope.businessList.loading = false;
+        $scope.$apply();
+
+        //console.log(JSON.stringify($scope.businessList.contents,null,4));
+      });
+  };
+
+  $scope.showBusinessProfile = function(id){
+      $scope.businessProfile.loading = true;
+      $scope.businessProfile.errorMsg = '';
+      io.socket.get('/businesses/'+ id, function onResponse(data, jwr){
+        if (jwr.error) {
+          $scope.businessProfile.errorMsg = data||jwr.status;
+          $scope.businessProfile.loading = false;
+          return;
+        }
+        $scope.businessProfile.contents = data;
+        $scope.businessProfile.loading = false;
+        $scope.$apply();
+
+        console.log(JSON.stringify($scope.businessProfile.contents,null,4));
+      });
+  }
 
 }]);

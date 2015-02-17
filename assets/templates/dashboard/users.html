@@ -4,7 +4,6 @@
     <h3>User Administration</h3>
   </div>
 
-  <!-- Error state -->
   <div ng-show="userList.errorMsg">
     <h5>Oops!</h5>
     <p>Looks like an error occurred.  Please try again later.</p>
@@ -13,18 +12,12 @@
     </code>
   </div>
 
-  <!-- Loading state -->
   <div ng-show="userList.loading">
     <span class="overlord-loading-spinner fa fa-spinner"></span>
     <span>Loading users...</span>
   </div>
 
-  <!-- Empty state -->
   <div ng-show="userList.contents.length === 0">
-    <!--
-    Note that this empty state will never actually matter because there
-    will always be at least one user (the currently-logged-in admin).
-    -->
     <span>No users yet.</span>
   </div>
 
@@ -59,21 +52,16 @@
       </td>
 
       <td>
-        <!-- Don't display the "show" button if this user is YOU (the visitor) -->
         <a ng-hide="me.id == user.id" href="#/users/{{user.id}}" class="btn btn-sm btn-primary">Show</a>
-        <!-- Instead show "My Profile" button -->
         <a ng-show="me.id == user.id" href="#/profile" class="btn btn-sm btn-primary">My Profile</a>
       </td>
-      <!-- <td><span ng-click="getProfile()" class="btn btn-sm btn-primary pointer">Show</span></td> -->
 
       <td>
-        <!-- Don't show edit button if this user is YOU (the visitor) -->
         <a ng-hide="me.id == user.id" href="#/users/{{user.id}}/edit" class="btn btn-sm btn-warning">Edit</a>
       </td>
-      <!-- <td><span ng-click="editUser()" class="btn btn-sm btn-primary pointer">Edit</span></td> -->
-
+      
       <td>
-        <!-- Don't show delete button if this user is YOU (the visitor) -->
+        
         <a ng-disabled="user.deleting" ng-hide="me.id == user.id" ng-click="deleteUser(user.id)" class="btn btn-sm btn-danger">
           <span ng-show="!user.deleting">Delete</span>
           <span class="overlord-loading-spinner fa fa-spinner" ng-show="user.deleting" ></span>
@@ -81,13 +69,6 @@
         </a>
 
       </td>
-      <!-- <td>
-        <form action="/user/destroy/1" method="POST">
-          <input type="hidden" name="_method" value="delete"/>
-          <input type="submit" class="btn btn-sm btn-danger" value="Delete"/>
-          <input type="hidden" name="_csrf" value="_csrf"  />
-        </form>
-      </td> -->
     </tr>
 
   </table>

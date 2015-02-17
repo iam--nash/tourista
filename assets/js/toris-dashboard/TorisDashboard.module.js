@@ -24,21 +24,13 @@ angular.module('TorisDashboard')
 });
 
 
-// Set up all of our HTTP requests to use a special header
-// which contains the CSRF token.
-// More about CSRF here: http://sailsjs.org/#/documentation/concepts/Security/CSRF.html
 angular.module('TorisDashboard')
 .config(['$httpProvider', function($httpProvider){
 
-  // Set the X-CSRF-Token header on every http request.
-  // (this doesn't take care of sockets!  We do that elsewhere.)
   $httpProvider.defaults.headers.common['X-CSRF-Token'] = window.SAILS_LOCALS._csrf;
 }]);
 
-/**
- * Time ago filter.
- *
- */
+
 angular.module('TorisDashboard')
 
 .filter('timeAgo', function() {
@@ -49,46 +41,35 @@ angular.module('TorisDashboard')
 
   return timeAgoFilter;
 
-})
+});
 
 
-// Listen for url fragment changes like "#/foo/bar-baz" so we can change the contents
-// of the <ng-view> tag (if it exists)
+
 angular.module('TorisDashboard')
 .config(['$routeProvider', function($routeProvider) {
 
   $routeProvider
 
-  // #/    (i.e. ng-view's "home" state)
+
   .when('/', {
     template: '',
-    // If the current user is an admin, "redirect" (client-side) to `#/users`.
-    // Otherwise redirect to `#/profile`
+   
     controller: ['$scope', '$location', function($scope, $location) {
       if ($scope.me.isAdmin) {
 
-        // Instead of:
-        // window.location.hash = '#/users';
-
-        // We can do it the angular way:
-        // (to avoid a bunch of weird digest loop errors)
         $location.path('/users');
         $location.replace();
         return;
       }
 
-      // Client-side redirect to `#/profile`
       $location.path('/profile');
       $location.replace();
       return;
     }]
   })
 
-
-  // #/users
   .when('/users', {
     templateUrl: 'templates/dashboard/users.html',
-    // Don't allow non-admins to access #/users.
     controller: ['$scope', '$location', '$http', function($scope, $location, $http) {
       if (!$scope.me.isAdmin) {
         $location.path('/');
@@ -96,52 +77,46 @@ angular.module('TorisDashboard')
         return;
       }
 
-      // Send request to Sails to fetch list of users.
-      // (Note that this endpoint also subscribes us to each of those user records,
-      //  and watches the User model)
+     
       $scope.userList.loading = true;
       $scope.userList.errorMsg = '';
       io.socket.get('/users', function (data, jwr) {
         if (jwr.error) {
-          // Display generic error, since there are no expected errors.
+      
           $scope.userList.errorMsg = 'An unexpected error occurred: '+(data||jwr.status);
 
-          // Hide loading spinner
           $scope.userList.loading = false;
           return;
         }
-        // Populate the userList with the newly fetched users.
+      
         $scope.userList.contents = data;
 
-        // Initially set `isActive` on the user referred to by `$scope.me`
-        // because if you're loading this page, your user must be active.
+        
         var currentUser = _.find($scope.userList.contents, {id: $scope.me.id});
         currentUser.isActive = true;
 
-        // Also initially set `msUntilInactive` to whatever the server told us
-        // on any user marked as `isActive` by the server.
+   
         var activeUsers = _.each($scope.userList.contents, function (user){
           if (user.msUntilInactive > 0){
             user.isActive = true;
           }
         });
 
-        // Hide loading spinner
+  
         $scope.userList.loading = false;
 
-        // Because `io.socket.on` isn't `io.socket.$on` or something
-        // we have to do this to render our changes into the DOM.
+   
         $scope.$apply();
       });
     }]
   })
 
 
-  // #/users/:id
+
   .when('/users/:id', {
     templateUrl: 'templates/dashboard/show-user.html',
     controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
-      // Don't allow non-admins to access #/users/:id.
+  
       if (!$scope.me.isAdmin) {
         $location.path('/');
         $location.replace();
@@ -149,7 +124,6 @@ angular.module('TorisDashboard')
       }
 
 
-      // Lookup user with the specified id from the server
       $scope.userProfile.loading = false;
       $scope.userProfile.errorMsg = '';
       io.socket.get('/users/'+$routeParams.id, function onResponse(data, jwr){
@@ -166,11 +140,11 @@ angular.module('TorisDashboard')
     }]
   })
 
-  // #/users/:id/edit
+
   .when('/users/:id/edit', {
     templateUrl: 'templates/dashboard/edit-user.html',
     controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
-      // Don't allow non-admins to access #/users/:id/edit.
+
       if (!$scope.me.isAdmin) {
         $location.path('/');
         $location.replace();
@@ -178,7 +152,7 @@ angular.module('TorisDashboard')
       }
 
 
-      // Lookup user with the specified id from the server
+    
       $scope.userProfile.loading = false;
       $scope.userProfile.errorMsg = '';
       $http.get('/users/'+$routeParams.id)
@@ -195,24 +169,23 @@ angular.module('TorisDashboard')
   })
 
 
-  // #/profile
+ 
   .when('/profile', {
     templateUrl: 'templates/dashboard/my-profile.html',
     controller: ['$scope', '$location', '$http', function($scope, $location, $http) {
 
-      // We already have this data in $scope.me, so we don't need to show a loading state.
+     
       $scope.userProfile.loading = false;
 
-      // We only talk to the server here in order to subscribe to ourselves
+     
       io.socket.get('/users/'+$scope.me.id, function onResponse(data, jwr){
         if (jwr.error){
           console.error('Unexpected error from Sails:', jwr.error);
           return;
         }
-        // angular.extend($scope.userProfile.properties, res.data);
+       
       });
 
-      // Pass `$scope.me` in to `$scope.userProfile`
       angular.extend($scope.userProfile.properties, $scope.me);
 
     }]
@@ -220,9 +193,40 @@ angular.module('TorisDashboard')
 
 
 
-  // #/stuff
-  .when('/stuff', {
-    templateUrl: 'templates/dashboard/example-page.html'
+  // #/business
+  .when('/businesses', {
+    templateUrl: 'templates/dashboard/businesses.html',
+    controller: ['$scope', '$location', '$http', function($scope, $location, $http) {
+      if (!$scope.me.isAdmin) {
+        $location.path('/');
+        $location.replace();
+        return;
+      }
+
+      $scope.businessList.loading = true;
+      $scope.businessList.errorMsg = '';
+      
+      io.socket.get('/businesses', function (data, jwr) {
+        if (jwr.error) {
+          // Display generic error, since there are no expected errors.
+          $scope.businessList.errorMsg = 'An unexpected error occurred: '+(data||jwr.status);
+
+          // Hide loading spinner
+          $scope.businessList.loading = false;
+          return;
+        }
+        // Populate the userList with the newly fetched users.
+        $scope.businessList.contents = data;
+
+
+        // Hide loading spinner
+        $scope.businessList.loading = false;
+
+        // Because `io.socket.on` isn't `io.socket.$on` or something
+        // we have to do this to render our changes into the DOM.
+        $scope.$apply();
+      });
+    }]
   })
 
 

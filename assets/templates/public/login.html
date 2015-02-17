@@ -1,0 +1,35 @@
+    <div class="container">
+        <form ng-submit="submitLoginForm()" class="col-md-6">
+              <!-- Error message -->
+            <ul ng-show="loginForm.topLevelErrorMessage" class="alert alert-danger">
+                <li>
+                  <span>{{loginForm.topLevelErrorMessage}}</span>
+                </li>
+            </ul>
+
+            <div class="form-group">
+                <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <input ng-model="loginForm.password" type="password" placeholder="Password" name="password" class="form-control">
+            </div>
+            <a href="#" class="pull-right">Forgot your password?</a><br/><br/>
+            <button type="submit" class="btn btn-success pull-right">
+                <span ng-show="!loginForm.loading">Sign in</span>
+                <span ng-show="loginForm.loading" class="fa fa-spinner"></span>
+                <span ng-show="loginForm.loading">Signing in...</span>
+            </button>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+        </form>
+      
+        <div class="col-md-6">
+
+            <center>
+                <h3>No Account Yet?</h3>
+                <a href="#/signup" class="btn btn-success">Signup Now!</a><br/><br/>
+                <p>
+                    Toris is the fun and easy way to find, review and talk about what's great - and not so great - in your local area. It's about real people giving their honest and personal opinions on everything from restaurants and spas to coffee shops and bars.
+                </p>
+            </center>
+        </div>
+    </div>

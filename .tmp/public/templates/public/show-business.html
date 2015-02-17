@@ -1,0 +1,25 @@
+<div class="container">
+  <!-- Error state -->
+  <div ng-show="businessProfile.errorMsg">
+    <h5>Oops!</h5>
+    <p>Looks like an error occurred.  Please try again later.</p>
+    <code>
+      {{errorMsg}}
+    </code>
+  </div>
+
+  <!-- Loading state -->
+  <div ng-show="businessProfile.loading">
+    <span class="overlord-loading-spinner fa fa-spinner"></span>
+    <span>Loading business data...</span>
+  </div>
+
+  <div ng-hide="businessProfile.loading">
+        <h4>{{businessProfile.contents.name}}</h4>
+        <p>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}}</p>
+  </div> 
+
+</div>
+
+
+

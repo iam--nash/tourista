@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+
+  <div class="panel-heading">
+    <h3>Business Administration</h3>
+  </div>
+
+  <div ng-show="businessList.errorMsg">
+    <h5>Oops!</h5>
+    <p>Looks like an error occurred.  Please try again later.</p>
+    <code>
+      {{businessList.errorMsg}}
+    </code>
+  </div>
+
+  <div ng-show="businessList.loading">
+    <span class="overlord-loading-spinner fa fa-spinner"></span>
+    <span>Loading businesses...</span>
+  </div>
+
+  <div ng-show="businessList.contents.length === 0">
+    <span>No businesses yet.</span>
+  </div>
+
+  <table class="table" ng-show="!businessList.loading && businessList.contents.length > 0">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Address</th>
+      <th>City</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <tr ng-repeat="business in businessList.contents">
+      <td> {{business.id}} </td>
+      <td> {{business.name}} </td>
+      <td> {{business.street}} </td>
+      <td> {{business.city}} </td>
+      <td>
+        <a href="#/businesses/{{business.id}}" class="btn btn-sm btn-primary">Show</a>
+      </td>
+      <td>
+        <a href="#/businesses/{{business.id}}/edit" class="btn btn-sm btn-warning">Edit</a>
+      </td>
+    </tr>
+
+  </table>
+</div>

@@ -59,13 +59,13 @@ module.exports.connections = {
   someMongodbServer: {
     adapter: 'sails-mongo',
     url: process.env.DB_URL,
-    /*
-    host: 'ds041841.mongolab.com',
-    port: 41841,
-    user: 'torisuser',
-    password: 'torispassword',
-    database: 'toris',
-    */
+    
+    //host: 'ds041841.mongolab.com',
+    //port: 41841,
+    //user: 'torisuser',
+    //password: 'torispassword',
+    //database: 'toris',
+    
     schema: true
   },
 

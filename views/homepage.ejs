@@ -3,7 +3,6 @@
   <head>
     <title>Toris</title>
 
-    <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
@@ -13,7 +12,6 @@
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
 
-    <!--Added this so the client has access to the csrf tag and it's grabbed first service side on every page -->
     <script type="text/javascript">
     window.SAILS_LOCALS = { _csrf: "<%= _csrf %>" };
     </script>
@@ -22,15 +20,12 @@
 
   <body ng-app="TorisPublic" ng-controller="PublicCtrl" ng-cloak>
 
-    <!-- Global errors (uiErrorBus) -->
     <div class="ui-error-bus">
       <li ng-repeat="error in errorBus"><span>{{error.message}}</span><span ng-click="errorBus.splice(indexOf(error), 1)" class="fa fa-remove"></span></li>
     </div>
 
-    <!-- Creates the navbar -->
     <nav class="navbar navbar-default">
       <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
             <span class="sr-only">Toggle navigation</span>
@@ -38,33 +33,32 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/#">Toris</a>
+          <a class="navbar-brand" href="#/">Toris</a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#/"><i class="fa fa-home"></i> Home</a></li>
+                <li><a href="#/profile"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="#/review"><i class="fa fa-comment"></i> Write a Review</a></li>
+            </ul>
+
             <form class="navbar-form navbar-right">
-              <a href="/login" class="btn btn-success">Login</a>
-              <a href="/signup" class="btn btn-success">Sign up now!</a>
+              <a href="#/login" class="btn btn-success">Login</a>
+              <a href="#/signup" class="btn btn-success">Sign up now!</a>
             </form>
         </div>
       </div>
     </nav>
 
-    <div class="container">
-      <div class=" col-md-8 col-md-offset-2">
-        <div class="jumbotron">
-          <h1>Toris Main Page</h1>
-          <h2>...it's a bird! it's a plane! no it's Superman!...</h2>
-        </div>
-      </div>
-    </div>
+    <div ng-view></div>
+    
     
     <div class="container">
         <hr/>
         <footer class="footer pull-right">
             <div>
-                <a href="#">Toris.com</a>
+                <a href="#/">Toris.com</a>
                 <div>run..... guided missile approaching!</div>
             </div>
         </footer>
@@ -81,10 +75,10 @@
     <script src="/js/dependencies/jquery.js"></script>
     <script src="/js/dependencies/lodash.min.js"></script>
     <script src="/js/dependencies/moment.js"></script>
-    <script src="/js/activity-overlord-dashboard/TorisDashboard.module.js"></script>
-    <script src="/js/activity-overlord-dashboard/ui-controls/DashboardCtrl.js"></script>
-    <script src="/js/activity-overlord-public/TorisPublic.module.js"></script>
-    <script src="/js/activity-overlord-public/ui-controls/PublicCtrl.js"></script>
+    <script src="/js/toris-dashboard/TorisDashboard.module.js"></script>
+    <script src="/js/toris-dashboard/ui-controls/DashboardCtrl.js"></script>
+    <script src="/js/toris-public/TorisPublic.module.js"></script>
+    <script src="/js/toris-public/ui-controls/PublicCtrl.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
