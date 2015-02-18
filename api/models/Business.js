@@ -26,6 +26,16 @@ module.exports = {
     province:{
       type: 'string',
       required: true
+    },
+
+    category:{
+      type: 'string',
+      required: true
+    },
+
+    photos:{
+      type: 'array',
+      default: []
     }
   }
 };
