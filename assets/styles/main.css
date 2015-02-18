@@ -1,0 +1,230 @@
+@font-face {
+  font-family: glai;
+  src: url(../fonts/source-sans-pro/sourcesanspro-semibold.woff);
+}
+
+header{
+  text-align: center;
+  padding: 25px 0;
+  background-color: rgb(26, 188, 156);
+  font-family: glai, Helvetica, Arial, sans-serif;
+}
+header .symbol {
+height: 90px;
+width: auto;
+}
+.nav-wrap ul{
+  text-align: center;
+}
+.footer-left{
+  float: left;
+}
+.main-forms{
+  text-align: 
+
+}
+.margin-bottom-none {
+margin-bottom: 0px !important;
+}
+.local-name{
+  text-indent: 10px;
+}
+.title-heading{
+  text-indent: 10px;
+}
+.user-image{
+  float: left;
+  padding-right: 10px;
+}
+.thumbnail>img{
+  height:100px;
+}
+.nav-tabs>li.active>a{
+  border: 0;
+}
+body > .ng-scope > div > div > .nav-tabs {
+  border-bottom: 0px;
+}
+.biz-indent{
+  text-indent: 10px;
+}
+
+ /*Biz Reviews----------------------*/
+#stars{
+  color: #F4E813;
+
+}
+.stars-review{
+  padding-left: 10px;
+}
+.reviews-number{
+  padding-left: 5px;
+}
+.biz-image{
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.panel-biznotif{
+  background-color: #2C3E50;
+}
+.panel-notif{
+  color: #fff;
+}
+.biz-avail{
+  color: #fff;
+  float: right;
+}
+.biz-menu{
+  padding: 3px 0px 0px 5px;
+}
+.biz-link {
+  color: #fff;
+}
+.biz-price-range{
+  padding: 3px 0px 0px 5px;
+}
+.price-range{
+  margin-left: 10px;
+}
+.panel-header-hours{
+  padding: 5px 0px 2px 15px;
+  background-color: rgb(26, 188, 156);
+}
+.user-name {
+  margin-bottom: 0px;
+}
+.date-rated{
+  float: right;
+}
+/*
+Recent Activity
+*/
+
+.recentactivity-wrap {
+  padding-top: 20px;
+
+}
+.panel-event .event-heading{
+  color: #fff;
+  background-color: rgb(26, 188, 156);
+}
+
+
+/*
+Rotation and Text Slide
+*/
+.symbol.rotate {
+  -ms-transform: rotate(0deg); /* IE 9 */
+  -webkit-transform: rotate(0deg); /* Chrome, Safari, Opera */
+  stransform: rotate(0deg);
+}
+
+
+
+
+
+.user-recentactivity{
+  float: left;
+}
+
+/*SIGNUP-------------------*/
+.signup-wrapper{
+  background-color:rgb(252, 241, 219);
+}
+.signup-text{
+  text-align: center;
+}
+.button-center{
+  text-align: center;
+}
+
+.signup-wrapper .well {
+  background-color: #364347;
+}
+
+.well>form {
+  margin-top: 15px;
+}
+
+.hr-line {
+  border: none;
+  border-top: 1px solid #ccccc8;
+  text-align: center;
+}
+.or-signup{
+  margin-bottom: 0px;
+}
+.or {
+  text-align: center;
+  color: #ccc;
+}
+
+
+/*userdashboard*/
+.user-name{
+  text-indent: 18px;
+}
+.user-photo{
+  padding: 15px 0px 15px 0px;
+}
+.user-photobox{
+  padding: 0px 0px 5px 0px;
+}
+.user-friends{
+  border-left: 1px solid;
+}
+.user-info{
+  margin-left: 10px;
+}
+.user-dashboard-reviews{
+  margin-top: 17px;
+}
+.user-friends{
+  margin-top: 17px;
+}
+.friends-img li{
+  list-style-type: none;
+  display: flex;
+  padding: 3px 3px 3px 3px;
+}
+.friends-img {
+  display: inline-flex;
+  padding-left: 5px;
+}
+.panel-friends{
+  padding: 8px 5px 1px 0px;
+}
+
+
+
+/*new biz in tourista*/
+
+.new-biz li{
+  list-style-type: none;
+  display: flex;
+  padding: 3px 3px 3px 3px;
+}
+.new-biz {
+  display: inline-flex;
+  padding-left: 5px;
+
+}
+
+/*end signup*/
+
+/*footer----------------*/
+.tourista-footer{
+  background-color:rgb(26, 188, 156);
+  color: #fff;
+}
+.footer-col{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.tourista-footer li{
+  list-style: none;
+}
+.tourista-copyrights{
+  text-align: center;
+  background-color: #CCCCCC;
+}

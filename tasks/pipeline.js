@@ -15,6 +15,12 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
+  //Main Css files
+  'styles/angular-toastr.css',
+  'styles/bootstrap-theme.css',
+  'styles/bootstrap.3.1.1.css',
+  //Load Drunken-parrot.css before any stylesheets
+  'styles/drunken-parrot.css',
   'styles/**/*.css'
 ];
 

@@ -113,7 +113,7 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
         $scope.businessList.loading = false;
         $scope.$apply();
 
-        //console.log(JSON.stringify($scope.businessList.contents,null,4));
+        console.log(JSON.stringify($scope.businessList.contents,null,4));
       });
   };
 
