@@ -42,6 +42,7 @@ module.exports.routes = {
 
   //Review API
   'GET /reviews/business/:id': 'ReviewController.findByBusiness',
+  'GET /reviews/business/count/:id': 'ReviewController.getTotalReview',
   'POST /reviews/new':'ReviewController.createReview'
 
 };

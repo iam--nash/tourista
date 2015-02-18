@@ -23,6 +23,8 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     contents: []
   };
 
+  $scope.selectedCategory = "";
+
   //Business Profile - show-business.html
   $scope.businessProfile = {
     loading: false,
@@ -211,5 +213,12 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     });
 
   };
+
+  $scope.getTotalReview = function(id){
+    io.socket.get('/reviews/business/count/'+ id, function onResponse(data, jwr){
+        console.log("Show Business Review Count\n\n");
+        console.log(JSON.stringify(data,null,4));
+    });
+  }
 
 }]);

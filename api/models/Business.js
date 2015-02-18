@@ -13,6 +13,11 @@ module.exports = {
       required: true
     },
 
+    description:{
+      type: 'string',
+      required: true
+    },
+
     streetaddress: {
       type: 'string',
       required: true

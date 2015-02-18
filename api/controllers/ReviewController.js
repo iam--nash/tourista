@@ -31,6 +31,30 @@ module.exports = {
 	    });	
 	},
 
+	getTotalReview: function(req, res){
+		if (!req.param('id')){
+	      return res.badRequest('businessId is a required parameter.');
+	    }
+
+		Review.count({businessId: req.param('id')}).exec(function(err, count){
+			return res.json({
+				numCount: count
+			});
+		});
+	},
+	/*
+	getAverageRating: function(req,res){
+		if (!req.param('id')){
+	      return res.badRequest('businessId is a required parameter.');
+	    }
+
+		Review.count({businessId: req.param('id')}).exec(function(err, count){
+			return res.json({
+				numCount: count
+			});
+		});
+	},*/
+
   	createReview: function(req,res){
   		Review.create({
   			userId: req.param('userid'),
@@ -41,8 +65,6 @@ module.exports = {
   			if(err) return res.negotiate(err);
 
   			console.log("success");
-
-  			
   		});
 	}
 };
