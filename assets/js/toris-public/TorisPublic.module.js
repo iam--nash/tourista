@@ -94,6 +94,8 @@ angular.module('TorisPublic')
     templateUrl: 'templates/public/documentation.html',
     controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
       $scope.showAllBusiness();
+      $scope.showBusinessCity("Magalang");
+      $scope.showBusinessCategory("Restaurant");
     }]
   })
 

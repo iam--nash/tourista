@@ -36,5 +36,8 @@ module.exports.routes = {
 
   //Business API
   'GET /businesses': 'BusinessController.find',
-  'GET /businesses/:id': 'BusinessController.findOne'
+  'GET /businesses/:id': 'BusinessController.findOne',
+  'GET /businesses/city/:city': 'BusinessController.findByCity',
+  'GET /businesses/category/:category': 'BusinessController.findByCategory'
+
 };

@@ -111,15 +111,17 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
         }
         $scope.businessList.contents = data;
         $scope.businessList.loading = false;
+        
         $scope.$apply();
 
-        //console.log(JSON.stringify($scope.businessList.contents,null,4));
+        //console.log(JSON.stringify(data,null,4));
       });
   };
 
   $scope.showBusinessProfile = function(id){
       $scope.businessProfile.loading = true;
       $scope.businessProfile.errorMsg = '';
+
       io.socket.get('/businesses/'+ id, function onResponse(data, jwr){
         if (jwr.error) {
           $scope.businessProfile.errorMsg = data||jwr.status;
@@ -128,10 +130,34 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
         }
         $scope.businessProfile.contents = data;
         $scope.businessProfile.loading = false;
+
         $scope.$apply();
 
-        console.log(JSON.stringify($scope.businessProfile.contents,null,4));
+        //console.log(JSON.stringify(data,null,4));
       });
+  };
+
+  $scope.showBusinessCity = function(city){
+      if(city === ""){
+        city = "Angeles City";
+      }
+
+      io.socket.get('/businesses/city/'+ city, function onResponse(data, jwr){
+        console.log("Show Business By City");
+        console.log(JSON.stringify(data,null,4));
+      });
+     
+  };
+
+  $scope.showBusinessCategory = function(category){
+    if(category === ""){
+      category = "Restaurant"
+    }
+
+    io.socket.get('/businesses/category/'+ category, function onResponse(data, jwr){
+        console.log("Show Business By Category");
+        console.log(JSON.stringify(data,null,4));
+    });
   }
 
 }]);
