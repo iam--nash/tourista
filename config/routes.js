@@ -41,6 +41,7 @@ module.exports.routes = {
   'GET /businesses/category/:category': 'BusinessController.findByCategory',
 
   //Review API
-  'GET /reviews/business/:id': 'ReviewController.findByBusiness'
+  'GET /reviews/business/:id': 'ReviewController.findByBusiness',
+  'POST /reviews/new':'ReviewController.createReview'
 
 };

@@ -11,6 +11,11 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     topLevelErrorMessage: ''
   };
 
+  $scope.reviewForm = {
+    loading: false,
+    topLevelErrorMessage: ''
+  };
+
   //Business List - home.html
   $scope.businessList = {
     loading: false,
@@ -24,6 +29,8 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     errorMsg: '',
     contents: []
   };
+
+
 
 
   $scope.submitLoginForm = function (){
@@ -99,6 +106,29 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     });
   };
 
+  $scope.submitReviewForm = function(){
+    
+    $http.post('/reviews/new', {
+      
+      userid: $scope.reviewForm.userId,
+      businessid: $scope.reviewForm.businessId,
+      review: $scope.reviewForm.review,
+      rating: $scope.reviewForm.rating
+    })
+    .then(function onSuccess (){
+      console.log("Success");
+    })
+    .catch(function onError(sailsResponse) {
+
+      console.log(sailsResponse);
+      
+    })
+    .finally(function eitherWay(){
+ 
+    });
+
+  };
+
   $scope.showAllBusiness = function (){
       $scope.businessList.loading = true;
       $scope.businessList.errorMsg = '';
@@ -152,10 +182,6 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
   };
 
   $scope.showBusinessCategory = function(category){
-    if(category === ""){
-      category = "Restaurant"
-    }
-
     io.socket.get('/businesses/category/'+ category, function onResponse(data, jwr){
         console.log("Show Business By Category\n\n");
         console.log(JSON.stringify(data,null,4));

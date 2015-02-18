@@ -17,11 +17,16 @@ module.exports = {
   		type: "string",
   		required: true
   	},
-  	
+
   	review:{
   		type: "string",
   		required: true
-  	}
+  	},
+
+    rating:{
+      type: "string",
+      required: true
+    }
   }
 };
 
