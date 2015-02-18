@@ -30,6 +30,13 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     contents: []
   };
 
+  //Review List - show-business.html
+  $scope.reviewList = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
+
 
 
 
@@ -182,7 +189,12 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
   };
 
   $scope.showBusinessCategory = function(category){
+    if(category === ""){
+      category = "Restaurant"
+    }
     io.socket.get('/businesses/category/'+ category, function onResponse(data, jwr){
+        $scope.businessList.contents = data;
+        $scope.$apply();
         console.log("Show Business By Category\n\n");
         console.log(JSON.stringify(data,null,4));
     });
@@ -192,6 +204,8 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
   $scope.showReviewBusiness = function(id){
 
     io.socket.get('/reviews/business/'+ id, function onResponse(data, jwr){
+        $scope.reviewList.contents = data;
+        $scope.$apply();
         console.log("Show Review By Business\n\n");
         console.log(JSON.stringify(data,null,4));
     });

@@ -45,6 +45,9 @@ margin-bottom: 0px !important;
 body > .ng-scope > div > div > .nav-tabs {
   border-bottom: 0px;
 }
+.nav-tabs > li > a {
+  border:0;
+}
 .biz-indent{
   text-indent: 10px;
 }
