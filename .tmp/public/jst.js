@@ -54,7 +54,7 @@ this["JST"]["assets/templates/public/documentation.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="container">\r\n\t<ul>\r\n\t\t<li ng-repeat="business in businessList.contents.photos">\r\n\t\t\t<img src="{{business}}" alt="">\r\n\t\t</li>\r\n\t</ul>\r\n</div>';
+__p += '<div class="container">\r\n\t<img src="" alt="">\r\n</div>';
 
 }
 return __p
