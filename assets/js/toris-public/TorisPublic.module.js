@@ -89,6 +89,15 @@ angular.module('TorisPublic')
       $scope.showBusinessProfile($routeParams.id);
     }]
   })
+
+  .when('/business/category/:category', {
+    templateUrl: 'templates/public/show-business-category.html',
+    controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
+      
+      $scope.showBusinessCategory($routeParams.category);
+    }]
+  })
+  
   //Testing route
   .when('/documentation', {
     templateUrl: 'templates/public/documentation.html',
