@@ -21,21 +21,42 @@
 	    <!-- Nav tabs -->
 	    <ul class="nav nav-tabs" role="tablist">
 	      <li role="presentation" class="active">
-	      	<a href="#resto" aria-controls="all" role="tab" data-toggle="tab">All</a>
+	      	<a href="#all" aria-controls="all" role="tab" data-toggle="tab">All</a>
 	      </li>
 	      <li role="presentation">
-	      	<a href="#coffee" aria-controls="categ_1" role="tab" data-toggle="tab">Category 1</a>
+	      	<a href="#categ1" aria-controls="categ_1" role="tab" data-toggle="tab">Category 1</a>
 	      </li>
 	      <li role="presentation">
-	      	<a href="#beauty" aria-controls="categ_2" role="tab" data-toggle="tab">Category 2</a>
+	      	<a href="#categ2" aria-controls="categ_1" role="tab" data-toggle="tab">Category 2</a>
 	      </li>
 	      <li role="presentation">
-	      	<a href="#travel" aria-controls="categ_3" role="tab" data-toggle="tab">Category 3</a>
+	      	<a href="#categ3" aria-controls="categ_2" role="tab" data-toggle="tab">Category 3</a>
 	      </li>
 	      <li role="presentation">
-	      	<a href="#estate" aria-controls="categ_4" role="tab" data-toggle="tab">Category 4</a>
+	      	<a href="#categ4" aria-controls="categ_3" role="tab" data-toggle="tab">Category 4</a>
+	      </li>
+	      <li role="presentation">
+	      	<a href="#categ5" aria-controls="categ_4" role="tab" data-toggle="tab">Category 5</a>
 	      </li>
 	    </ul>
+	    <!-- All touris destination-->
+		<div ng-show="!businessList.loading && businessList.contents.length > 0" class="tab-content" align="center">
+			<div role="tabpanel" class="tab-pane fade in active" id="all"> 
+				<div ng-repeat="business in businessList.contents | orderBy:'name'" class="col-md-3 col-sm-4">
+					<div class="thumbnail thumbnail-caption">
+						<img src="assets/images/img1.jpg" class="img-responsive" alt="100%x180">
+						<div class="caption">
+							<h4 class="business-name">{{business.name}}
+								<a ng-href="#/business/{{business.id}}"></a>
+							</h4>
+							<h6 class="review-number">5 Star(need review directive)</h6>
+							<img class="user-image img-responsive" src="assets/images/user.jpg">
+							<p class="review-text">{{business.street}}, {{business.city}}, {{business.province}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	    <!-- All touris destination-->
 		<div ng-show="!businessList.loading && businessList.contents.length > 0" class="tab-content" align="center">
 			<div role="tabpanel" class="tab-pane fade in active" id="all"> 
