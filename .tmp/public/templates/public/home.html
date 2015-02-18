@@ -1,23 +1,150 @@
+<!-- Categories of Tourist Destination Widget -->
 <div class="container">
-	<h3>Show List of Businesses:</h3><hr/>
-	<div ng-show="businessList.errorMsg">
-	    <h5>Oops!</h5>
-	    <p>Looks like an error occurred.  Please try again later.</p>
-	    <code>
-	      {{businessList.errorMsg}}
-	    </code>
-  	</div>
-  	<div ng-show="businessList.loading">
-    <span class="overlord-loading-spinner fa fa-spinner"></span>
-    	<span>Loading businesses...</span>
-  	</div>
-  	<div ng-show="businessList.contents.length === 0">
-    	<span>No businesses yet.</span>
-  	</div>
-	<ul class="row" ng-show="!businessList.loading && businessList.contents.length > 0">
-		<li ng-repeat="business in businessList.contents">
-			<h4><a href="#/business/{{business.id}}">{{business.name}}</a></h4>
-			<p>{{business.street}}, {{business.city}}, {{business.province}}</p>
-		</li>
-	<ul>
+	<div class="">
+	  	<h3 class="local-name">List of Tourist Destination</h3>
+		<div ng-show="businessList.errorMsg">
+		    <h5>Oops!</h5>
+		    <p>Looks like an error occurred.  Please try again later.</p>
+		    <code>
+		      {{businessList.errorMsg}}
+		    </code>
+	  	</div>
+
+	  <!---Start of Panel -->
+		<div role="tabpanel" ng-show="businessList.loading">
+			<span class="overlord-loading-spinner fa fa-spinner"></span>
+				<span>Loading businesses...</span>
+		</div>
+	  	<div ng-show="businessList.contents.length === 0">
+	    	<span>No businesses yet.</span>
+	  	</div>
+	    <!-- Nav tabs -->
+	    <ul class="nav nav-tabs" role="tablist">
+	      <li role="presentation" class="active">
+	      	<a href="#all" aria-controls="all" role="tab" data-toggle="tab">All</a>
+	      </li>
+	      <li role="presentation">
+	      	<a href="#categ1" aria-controls="categ_1" role="tab" data-toggle="tab">Category 1</a>
+	      </li>
+	      <li role="presentation">
+	      	<a href="#categ2" aria-controls="categ_1" role="tab" data-toggle="tab">Category 2</a>
+	      </li>
+	      <li role="presentation">
+	      	<a href="#categ3" aria-controls="categ_2" role="tab" data-toggle="tab">Category 3</a>
+	      </li>
+	      <li role="presentation">
+	      	<a href="#categ4" aria-controls="categ_3" role="tab" data-toggle="tab">Category 4</a>
+	      </li>
+	      <li role="presentation">
+	      	<a href="#categ5" aria-controls="categ_4" role="tab" data-toggle="tab">Category 5</a>
+	      </li>
+	    </ul>
+	    <!-- All touris destination-->
+		<div ng-show="!businessList.loading && businessList.contents.length > 0" class="tab-content" align="center">
+			<div role="tabpanel" class="tab-pane fade in active" id="all"> 
+				<div ng-repeat="business in businessList.contents | orderBy:'name'" class="col-md-3 col-sm-4">
+					<div class="thumbnail thumbnail-caption">
+						<img src="assets/images/img1.jpg" class="img-responsive" alt="100%x180">
+						<div class="caption">
+							<h4 class="business-name">{{business.name}}
+								<a ng-href="#/business/{{business.id}}"></a>
+							</h4>
+							<h6 class="review-number">5 Star(need review directive)</h6>
+							<img class="user-image img-responsive" src="assets/images/user.jpg">
+							<p class="review-text">{{business.street}}, {{business.city}}, {{business.province}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	    <!-- All touris destination-->
+		<div ng-show="!businessList.loading && businessList.contents.length > 0" class="tab-content" align="center">
+			<div role="tabpanel" class="tab-pane fade in active" id="all"> 
+				<div ng-repeat="business in businessList.contents | orderBy:'name'" class="col-md-3 col-sm-4">
+					<div class="thumbnail thumbnail-caption">
+						<img src="assets/images/img1.jpg" class="img-responsive" alt="100%x180">
+						<div class="caption">
+							<h4 class="business-name">{{business.name}}
+								<a ng-href="#/business/{{business.id}}"></a>
+							</h4>
+							<h6 class="review-number">5 Star(need review directive)</h6>
+							<img class="user-image img-responsive" src="assets/images/user.jpg">
+							<p class="review-text">{{business.street}}, {{business.city}}, {{business.province}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
 </div>
+<!-- /Categories of Tourist Destination Widget -->
+
+<!-- Recent Activity -->
+<div class="recentactivity-wrap">
+	<div class="container-fluid">
+	  	<h3 class="title-heading"> Recent Activity</h3>
+		<div class="row">
+
+			<div class="col-sm-8">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="col-lg-2">
+							<div class="user-image">
+								<img class="img-thumbnail" src="http://placehold.it/80x80">
+							</div>
+						</div>
+						<span class="user-name">
+							<a href="userdashboard.html">{name}</a>
+						</span> |
+						<span class="user-location"> <a href="#">{location}</a></span>
+						<div class="user-rating">
+							<span id="stars" class="fa fa-star"></span>
+							<span id="stars" class="fa fa-star"></span>
+							<span id="stars" class="fa fa-star"></span>
+							<span id="stars" class="fa fa-star"></span>
+							<span id="stars" class="fa fa-star"></span>
+
+							<span class="date-rated">{date-posted}</span>
+						</div>
+						<div class="col-lg-9 user-review">
+							<p>{user-review}</p>
+						</div>
+					</div>
+				</div>
+			</div> <!-- end of .col-xs-8 -->
+
+			<div class="col-sm-4">
+				<!-- /.panel .chat-panel -->
+				<div class="panel panel-default panel-event">
+					<div class="panel-heading event-heading">
+						<h3 class="panel-title ">Events </h3>
+					</div>
+					<div class="panel-body panel-events">
+					<div class="col-lg-3">
+					<div class="user-image">
+					<img class="img-thumbnail" src="http://placehold.it/60x60">
+					</div>
+					</div>
+					<div class="event-desc">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod </p>
+					</div>
+					</div>
+					<div class="panel-body panel-events">
+					<div class="col-lg-3">
+					<div class="user-image">
+					<img class="img-thumbnail" src="http://placehold.it/60x60">
+					</div>
+					</div>
+					<div class="event-desc">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod </p>
+					</div>
+					</div>
+				</div>
+			</div> 
+		</div> 
+	</div>
+</div>
+<!-- Recent Activity -->
+
+
