@@ -97,6 +97,7 @@ angular.module('TorisPublic')
       $scope.showBusinessProfile("54e36513e4b0e69a3d1e9eb5");
       $scope.showBusinessCity("Magalang");
       $scope.showBusinessCategory("Restaurant");
+      $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
     }]
   })
 

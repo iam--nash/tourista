@@ -8,7 +8,20 @@
 module.exports = {
 
   attributes: {
+  	userId:{
+  		type: "string",
+  		required: true
+  	},
+
+  	businessId:{
+  		type: "string",
+  		required: true
+  	},
   	
+  	review:{
+  		type: "string",
+  		required: true
+  	}
   }
 };
 
