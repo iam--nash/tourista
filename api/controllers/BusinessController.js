@@ -57,7 +57,7 @@ module.exports = {
 
   delete: function (req, res) {
     if (!req.param('id')) {
-      return res.badRequest('`id` of business to edit is required');
+      return res.badRequest('`id` of business to delete is required');
     }
 
     Business.destroy({
