@@ -18,6 +18,7 @@ module.exports = {
         prunedBusinesses.push({
           id: business.id,
           name: business.name,
+          description: business.description,
           street: business.streetaddress,
           city: business.city,
           province: business.province,
@@ -44,6 +45,7 @@ module.exports = {
       return res.json({
         id: business.id,
         name: business.name,
+        description: business.description,
         street: business.streetaddress,
         city: business.city,
         province: business.province,
@@ -68,6 +70,7 @@ module.exports = {
         prunedBusinesses.push({
           id: business.id,
           name: business.name,
+          description: business.description,
           street: business.streetaddress,
           city: business.city,
           province: business.province,
@@ -95,6 +98,7 @@ module.exports = {
         prunedBusinesses.push({
           id: business.id,
           name: business.name,
+          description: business.description,
           street: business.streetaddress,
           city: business.city,
           province: business.province,

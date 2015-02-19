@@ -51,7 +51,6 @@ angular.module('TorisPublic')
     templateUrl: 'templates/public/home.html',
     controller: ['$scope', '$location', function($scope, $location) {
         $scope.showAllBusiness();
-
         $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
     }]
   })
@@ -93,6 +92,15 @@ angular.module('TorisPublic')
       $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
     }]
   })
+
+  .when('/business/category/:category', {
+    templateUrl: 'templates/public/show-business-category.html',
+    controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
+      $scope.selectedCategory = $routeParams.category;
+      $scope.showBusinessCategory($routeParams.category);
+    }]
+  })
+  
   //Testing route
   .when('/documentation', {
     templateUrl: 'templates/public/documentation.html',
@@ -103,6 +111,7 @@ angular.module('TorisPublic')
       $scope.showBusinessCategory("Restaurant");
 
       $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
+      $scope.getTotalReview("54e36a84e4b0e69a3d1e9f0b");
     }]
   })
 
