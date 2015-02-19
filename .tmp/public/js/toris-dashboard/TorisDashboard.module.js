@@ -50,21 +50,25 @@ angular.module('TorisDashboard')
 
   $routeProvider
 
-
   .when('/', {
-    template: '',
-   
+    templateUrl: 'templates/dashboard/home.html',
     controller: ['$scope', '$location', function($scope, $location) {
-      if ($scope.me.isAdmin) {
+      $scope.showAllBusiness();
+      $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
+    }]
+  })
 
-        $location.path('/users');
-        $location.replace();
-        return;
-      }
+  .when('/userprofile', {
+    templateUrl: 'templates/dashboard/profile.html',
+    controller: ['$scope', '$location', function($scope, $location) {
+      
+    }]
+  })
 
-      $location.path('/profile');
-      $location.replace();
-      return;
+  .when('/review', {
+    templateUrl: 'templates/dashboard/review.html',
+    controller: ['$scope', '$location', function($scope, $location) {
+      
     }]
   })
 
@@ -208,29 +212,53 @@ angular.module('TorisDashboard')
       
       io.socket.get('/businesses', function (data, jwr) {
         if (jwr.error) {
-          // Display generic error, since there are no expected errors.
           $scope.businessList.errorMsg = 'An unexpected error occurred: '+(data||jwr.status);
 
-          // Hide loading spinner
           $scope.businessList.loading = false;
           return;
         }
-        // Populate the userList with the newly fetched users.
         $scope.businessList.contents = data;
 
-
-        // Hide loading spinner
         $scope.businessList.loading = false;
-
-        // Because `io.socket.on` isn't `io.socket.$on` or something
-        // we have to do this to render our changes into the DOM.
+     
         $scope.$apply();
       });
     }]
   })
 
+  .when('/business/:id', {
+    templateUrl: 'templates/public/show-business.html',
+    controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
+      $scope.showBusinessProfile($routeParams.id);   
+    }]
+  })
 
+  .when('/business/:id/edit', {
+    templateUrl: 'templates/dashboard/edit-business.html',
+    controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
 
+      if (!$scope.me.isAdmin) {
+        $location.path('/');
+        $location.replace();
+        return;
+      }
+
+      $scope.editbusinessProfile.loading = false;
+      $scope.editbusinessProfile.errorMsg = '';
+      $http.get('/businesses/'+$routeParams.id)
+      .then(function onSuccess(res){
+        angular.extend($scope.editbusinessProfile.properties, res.data);
+      })
+      .catch(function onError(res){
+        $scope.editbusinessProfile.errorMsg = res.data||res.status;
+      })
+      .finally(function eitherWay(){
+        $scope.editbusinessProfile.loading = false;
+      });
+    }]
+  })
+
+  
   // #/?????     (i.e. anything else)
   .otherwise({
     redirectTo: '/'

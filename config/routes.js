@@ -37,12 +37,18 @@ module.exports.routes = {
   //Business API
   'GET /businesses': 'BusinessController.find',
   'GET /businesses/:id': 'BusinessController.findOne',
+  'PUT /businesses/:id': 'BusinessController.update',
+  'DELETE /businesses/:id': 'BusinessController.delete',
   'GET /businesses/city/:city': 'BusinessController.findByCity',
   'GET /businesses/category/:category': 'BusinessController.findByCategory',
+  
 
   //Review API
   'GET /reviews/business/:id': 'ReviewController.findByBusiness',
   'GET /reviews/business/count/:id': 'ReviewController.getTotalReview',
+  'GET /reviews/business/rating/:id': 'ReviewController.getAverageRating',
   'POST /reviews/new':'ReviewController.createReview'
+
+
 
 };

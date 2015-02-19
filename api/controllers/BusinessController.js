@@ -55,6 +55,40 @@ module.exports = {
     });
   },
 
+  delete: function (req, res) {
+    if (!req.param('id')) {
+      return res.badRequest('`id` of business to edit is required');
+    }
+
+    Business.destroy({
+      id: req.param('id')
+    }).exec(function (err, businessDestroyed){
+      if (err) return res.negotiate(err);
+      if (businessDestroyed.length === 0) {
+        return res.notFound();
+      }
+
+      return res.ok();
+    });
+  },
+
+  update: function (req, res) {
+    if (!req.param('id')) {
+      return res.badRequest('`id` of business to edit is required');
+    }
+
+    Business.update(req.param('id'), req.params.all(), function businessUpdated(err, newBusiness){
+      if(err){
+        console.log(err);
+      }
+
+      return res.json({
+        business: newBusiness
+      })
+    });
+  },
+
+
   findByCity: function (req, res) {
 
     if (!req.param('city')){

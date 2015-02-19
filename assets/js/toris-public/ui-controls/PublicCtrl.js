@@ -221,4 +221,11 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     });
   }
 
+  $scope.getAverageRating = function(id){
+    io.socket.get('/reviews/business/rating/'+ id, function onResponse(data, jwr){
+        console.log("Show Business Average Rating\n\n");
+        console.log(JSON.stringify(data,null,4));
+    });
+  }
+
 }]);
