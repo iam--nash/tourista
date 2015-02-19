@@ -114,8 +114,8 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
         
         $scope.$apply();
 
-
-        console.log(JSON.stringify($scope.businessList.contents,null,4));
+        console.log("Show ALL Business");
+        console.log(JSON.stringify(data,null,4));
       });
   };
 
@@ -134,7 +134,8 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
 
         $scope.$apply();
 
-        //console.log(JSON.stringify(data,null,4));
+        console.log("Show Single Business By Id");
+        console.log(JSON.stringify(data,null,4));
       });
   };
 
@@ -156,7 +157,7 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     }
 
     io.socket.get('/businesses/category/'+ category, function onResponse(data, jwr){
-        console.log("Show Business By Category");
+        console.log("Show Business By Category\n\n");
         console.log(JSON.stringify(data,null,4));
     });
   }

@@ -20,7 +20,9 @@ module.exports = {
           name: business.name,
           street: business.streetaddress,
           city: business.city,
-          province: business.province
+          province: business.province,
+          category: business.category,
+          photos: business.photos
         });
       });
 
@@ -44,7 +46,9 @@ module.exports = {
         name: business.name,
         street: business.streetaddress,
         city: business.city,
-        province: business.province
+        province: business.province,
+        category: business.category,
+        photos: business.photos
       });
     });
   },
