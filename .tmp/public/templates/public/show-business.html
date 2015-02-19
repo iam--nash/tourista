@@ -37,7 +37,7 @@
               <span>No review yet.</span>
               <br><br><br><br><br><br><br>
             </div>
-            <div ng-repeat="businessProfile.review in businessProfile.reviewList.contents | orderBy:'-dateCreated'" class="panel-body">
+            <div ng-repeat="review in reviewList.contents | filter:{category}" class="panel-body">
               <div class="col-lg-2">
                 <div class="user-image">
                   <img class="img-thumbnail" src="/images/user.jpg">
