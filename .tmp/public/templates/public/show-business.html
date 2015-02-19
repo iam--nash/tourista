@@ -33,8 +33,11 @@
       <div class="biz-reviews">
         <div class="col-lg-8">
           <div class="panel panel-default">
-
-            <div ng-repeat="review in businessProfile.contents" class="panel-body">
+            <div ng-show="businessProfile.contents.review === 0">
+              <span>No review yet.</span>
+              <br><br><br><br><br><br><br>
+            </div>
+            <div ng-repeat="businessProfile.review in businessProfile.reviewList.contents | orderBy:'-dateCreated'" class="panel-body">
               <div class="col-lg-2">
                 <div class="user-image">
                   <img class="img-thumbnail" src="/images/user.jpg">
@@ -48,7 +51,7 @@
                 <span id="stars" class="fa fa-star"></span>
                 <span id="stars" class="fa fa-star"></span>
                 <span id="stars" class="fa fa-star"></span>
-                <span class="date-rated"> February 14, 2015</span>
+                <span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
               </div>
               <div class="col-lg-9 user-review">
                 <p>{{review.review}}</p>

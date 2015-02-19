@@ -65,7 +65,7 @@
 				    	<br><br><br><br><br><br><br>
 				  	</div>
 			  	</div>
-				<div ng-repeat="business in businessList.contents | orderBy:'name' | limitTo:'12'" class="col-md-3 col-sm-4">
+				<div ng-repeat="business in businessList.contents | orderBy:'name' | limitTo:'12'"class="col-md-3 col-sm-4">
 					<div class="thumbnail thumbnail-caption">
 						<img ng-src="{{business.photos[0]}}" class="img-responsive" alt="Business Image">
 						<div class="caption">
@@ -73,6 +73,7 @@
 								<h4 class="business-name">{{business.name}}</h4>
 							</a>
 							<p class="review-text">{{business.street}}, {{business.city}}, {{business.province}}</p>
+							<p class="description">{{business.description}}</p>
 						</div>
 					</div>
 				</div>
