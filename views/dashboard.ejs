@@ -29,7 +29,12 @@
       <source src="/sounds/notify.mp3" type="audio/mpeg">
       <source src="/sounds/notify.wav" type="audio/wav">
     </audio>
+    <header class="adown" style="transform: translate(0px, 0px); opacity: 1;">
+        <a href="index.html" title="Tourista 1.0">
+            <img src="/images/logo.jpg" alt="Tourista 1.0 Logo - Back to the home-page" class="symbol">
+        </a>
 
+    </header>
     <div class="ui-error-bus">
       <li ng-repeat="error in errorBus"><span>{{error.message}}</span><span ng-click="errorBus.splice(indexOf(error), 1)" class="fa fa-remove"></span></li>
     </div>
@@ -67,10 +72,74 @@
           </div>
         </div>
       </nav>
-
+      <div>
+      <h3 class="local-name"> TOURISTA 1.0 | Angeles City</h3>
+      </div>
+      <div class="jumbotron jumbotron-default">
+        <div class="jumbotron-border">
+          <div class="container">
+            <div class="row">
+            <div class="col-xs-1 icon-samples">
+              <h2><img class="img-responsive" src="/images/map.svg"></h2>
+            </div>
+              <div class="col-xs-10 pull-left">
+              <h2>Tourista 1.0  is the best way to find great local businesses</h2>
+              </div>
+              <div class="col-xs-12">
+              <p>
+              People use Tourista 1.0 to search for everything from the city's tastiest burger to the most renowned cardiologist. What will you uncover in your neighborhood?
+              </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div ng-view></div>
-      
-    </div>
+      <div class="tourista-footer">
+        <div class="container">
+          <div class="row">
+            <div class="tourista-main-footer">
+              <div class="footer-col col-lg-3 col-md-3 col-sm-3">
+                <ul>
+                  <h4> About </h4>
+                  <li> Content Guidelines </li>
+                  <li> Terms of Privacy </li>
+                  <li> Privacy Policy </li>
+                  <li> Ad Privacy Info</li>
+                </ul>
+              </div>
+              <div class="footer-col col-lg-3 col-md-3 col-sm-3">
+                <ul>
+                  <h4> Support </h4>
+                  <li> Content Guidelines </li>
+                  <li> Terms of Privacy </li>
+                  <li> Privacy Policy </li>
+                  <li> Ad Privacy Info</li>
+                </ul>
+              </div>
+              <div class="footer-col col-lg-3 col-md-3 col-sm-3 ">
+                <ul>
+                  <h4> Developers </h4>
+                  <li> Content Guidelines </li>
+                  <li> Terms of Privacy </li>
+                  <li> Privacy Policy </li>
+                  <li> Ad Privacy Info</li>
+                </ul>
+              </div>
+              <div class="footer-col col-lg-3 col-md-3 col-sm-3">
+                <img class="img-responsive" src="/images/mobile.jpg">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tourista-copyrights">
+        <div class="container-fluid">
+          <div class="row">
+            <h5> TOURISTA 1.0 | All Rights Reserve</h5>
+          </div>
+        </div>
+      </div>
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
     <script src="/js/dependencies/angular.1.3.js"></script>
