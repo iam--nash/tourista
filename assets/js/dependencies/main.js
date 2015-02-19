@@ -132,4 +132,4 @@ $(document).ready( function(){
     $('.navbar-toggle').on('click', function(){
         $('.collapse.navbar-collapse').slideToggle();
     });
-    
+});

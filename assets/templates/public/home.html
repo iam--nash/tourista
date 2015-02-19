@@ -43,8 +43,30 @@
 		<div ng-show="!businessList.loading && businessList.contents.length > 0" class="tab-content" align="center">
 			<div role="tabpanel" class="tab-pane fade in active" id="all"> 
 				<div ng-repeat="business in businessList.contents | orderBy:'name'" class="col-md-3 col-sm-4">
+
 					<div class="thumbnail thumbnail-caption">
-						<img ng-src="#/business/{{business.photos}}" class="img-responsive" alt="100%x180">
+						<img ng-src="{{business.photos[0]}}" class="img-responsive" alt="Business Image">
+						<div class="caption">
+							<a ng-href="#/business/{{business.id}}">
+								<h4 class="business-name">{{business.name}}</h4>
+							</a>
+							
+							<h6 class="review-number">5 Star(need review directive)</h6>
+							<img class="user-image img-responsive" ng-src="/images/user.jpg">
+							<p class="review-text">{{business.street}}, {{business.city}}, {{business.province}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Category 1 -->
+		<div ng-show="!businessList.loading && businessList.contents.length > 0" class="tab-content" align="center">
+			<div role="tabpanel" class="tab-pane fade in active" id="categ1"> 
+				<div ng-repeat="business in businessList.contents | filter:'category.restaurant'" class="col-md-3 col-sm-4">
+
+					<div class="thumbnail thumbnail-caption">
+						<img ng-src="{{business.photos[0]}}" class="img-responsive" alt="Business Image">
 						<div class="caption">
 							<h4 class="business-name">{{business.name}}
 								<a ng-href="#/business/{{business.id}}"></a>
@@ -57,6 +79,7 @@
 				</div>
 			</div>
 		</div>
+
 
 	</div>
 </div>
