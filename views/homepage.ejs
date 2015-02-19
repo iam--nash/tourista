@@ -25,6 +25,12 @@
   </head>
 
   <body ng-app="TorisPublic" ng-controller="PublicCtrl" ng-cloak>
+    <header class="adown" style="transform: translate(0px, 0px); opacity: 1;">
+        <a href="index.html" title="Tourista 1.0">
+            <img src="/images/logo.jpg" alt="Tourista 1.0 Logo - Back to the home-page" class="symbol">
+        </a>
+
+    </header>
     <div class="ui-error-bus">
       <li ng-repeat="error in errorBus"><span>{{error.message}}</span><span ng-click="errorBus.splice(indexOf(error), 1)" class="fa fa-remove"></span></li>
     </div>
@@ -79,11 +85,11 @@
     <script src="/js/dependencies/compareTo.module.js"></script>
     <script src="/js/dependencies/jquery.js"></script>
     <script src="/js/dependencies/lodash.min.js"></script>
+    <script src="/js/dependencies/main.js"></script>
     <script src="/js/dependencies/moment.js"></script>
     <script src="/js/toris-dashboard/TorisDashboard.module.js"></script>
     <script src="/js/toris-dashboard/ui-controls/DashboardCtrl.js"></script>
     <script src="/js/toris-public/TorisPublic.module.js"></script>
-    <script src="/js/toris-public/main.js"></script>
     <script src="/js/toris-public/ui-controls/PublicCtrl.js"></script>
     <!--SCRIPTS END-->
   </body>
