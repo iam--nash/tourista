@@ -1,0 +1,130 @@
+
+<!-- Categories of Tourist Destination Widget -->
+<div class="container-fluid">
+	<div class="row">
+	  	<h3 class="local-name">List of Tourist Destination</h3>
+		<div ng-show="businessList.errorMsg">
+		    <h5>Oops!</h5>
+		    <p>Looks like an error occurred.  Please try again later.</p>
+		    <code>
+		      {{businessList.errorMsg}}
+		    </code>
+	  	</div>
+
+
+	    <!-- Nav tabs -->
+	    <ul class="nav nav-tabs" role="tablist">
+			<li role="presentation">
+				<a ng-click="showBusinessCategory('Restaurant')">Restaurant</a>
+			</li>
+			<li role="presentation">
+				<a ng-click="showBusinessCategory('Coffee and tea')">Coffee and Tea</a>
+			</li>
+			<li role="presentation">
+				<a ng-click="showBusinessCategory('Beauty and Spa')">Beauty and Spa</a>
+			</li>
+			<li role="presentation">
+				<a ng-click="showBusinessCategory('Travel')">Travel</a>
+			</li>
+			<li role="presentation">
+				<a ng-click="showBusinessCategory('Hotels')">Hotels</a>
+			</li>
+	    </ul>
+	    <!-- All touris destination-->
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane fade in active" id="all">
+				<!---Start of Panel -->
+				<div class="col-xs-12">
+					<div role="tabpanel" ng-show="businessList.loading">
+						<span class="overlord-loading-spinner fa fa-spinner"></span>
+							<span>Loading businesses...</span>
+					</div>
+				  	<div ng-show="businessList.contents.length === 0">
+				    	<span>No businesses yet.</span>
+				    	<br><br><br><br><br><br><br>
+				  	</div>
+			  	</div>
+				<div ng-repeat="business in businessList.contents | orderBy:'name' | limitTo:'12'" class="col-md-3 col-sm-4">
+					<div class="thumbnail thumbnail-caption">
+						<img ng-src="{{business.photos[0]}}" class="img-responsive" alt="Business Image">
+						<div class="caption">
+							<a ng-href="#/business/{{business.id}}">
+								<h4 class="business-name">{{business.name}}</h4>
+							</a>
+							<p class="review-text">{{business.street}}, {{business.city}}, {{business.province}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- /Categories of Tourist Destination Widget -->
+
+<!-- Recent Activity -->
+<div class="recentactivity-wrap">
+	<div class="container-fluid">
+	  	<h3 class="title-heading"> Recent Activity</h3>
+		<div class="row">
+
+			<div class="col-sm-8">
+				<div ng-repeat="review in reviewList.contents | orderBy:'-dateCreated' | limitTo:3" class="panel panel-default">
+					<div class="panel-body">
+						<div class="col-lg-2">
+							<div class="user-image">
+								<img class="img-thumbnail" src="/images/user.jpg">
+							</div>
+						</div>
+						<span class="user-name">
+							<a href="userdashboard.html">{name}</a>
+						</span> <!-- |
+						<span class="user-location"> <a href="#">{location}</a></span> -->
+						<div class="user-rating">
+							<span id="stars" class="fa fa-star"></span>
+							<span id="stars" class="fa fa-star"></span>
+							<span id="stars" class="fa fa-star"></span>
+							<span id="stars" class="fa fa-star"></span>
+							<span id="stars" class="fa fa-star"></span>
+
+							<span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
+						</div>
+						<div class="col-lg-9 user-review">
+							<p>{{review.review}}</p>
+						</div>
+					</div>
+				</div>
+			</div> <!-- end of .col-xs-8 -->
+
+			<div class="col-sm-4">
+				<!-- /.panel .chat-panel -->
+				<div class="panel panel-default panel-event">
+					<div class="panel-heading event-heading">
+						<h3 class="panel-title ">Events </h3>
+					</div>
+					<div class="panel-body panel-events">
+					<div class="col-lg-3">
+					<div class="user-image">
+					<img class="img-thumbnail" src="http://placehold.it/60x60">
+					</div>
+					</div>
+					<div class="event-desc">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod </p>
+					</div>
+					</div>
+					<div class="panel-body panel-events">
+					<div class="col-lg-3">
+					<div class="user-image">
+					<img class="img-thumbnail" src="http://placehold.it/60x60">
+					</div>
+					</div>
+					<div class="event-desc">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod </p>
+					</div>
+					</div>
+				</div>
+			</div> 
+		</div> 
+	</div>
+</div>
+<!-- Recent Activity -->

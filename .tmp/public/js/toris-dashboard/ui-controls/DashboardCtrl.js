@@ -30,6 +30,26 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
   };
 
 
+  $scope.reviewList = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
+
+  $scope.businessProfile = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
+
+  $scope.editbusinessProfile = {
+    properties: {},
+    errorMsg: '',
+    saving: false,
+    loading: false
+  };
+
+
   $scope.me = window.SAILS_LOCALS.me;
 
 
@@ -44,9 +64,6 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
 
 
   });
-
-
-
 
 
   var REFRESH_ONLINE_STATUS_INTERVAL = 250;
@@ -199,13 +216,11 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
     })
     .catch(function onError(sailsResponse){
 
- 
       var emailAddressAlreadyInUse = !sailsResponse.data && sailsResponse.data.error !== 'E_VALIDATION';
       if (emailAddressAlreadyInUse) {
         $scope.userProfile.errorMsg = 'Email address already in use.';
         return;
       }
-
      
       $scope.userProfile.errorMsg = 'An unexpected error occurred: '+(sailsResponse.data||sailsResponse.status);
     })
@@ -243,7 +258,6 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
     $scope.userProfile.saving = true;
     $scope.userProfile.errorMsg = '';
 
- 
     return $http.put('/users/'+userId, {
       name: $scope.userProfile.properties.name,
       title: $scope.userProfile.properties.title,
@@ -297,6 +311,113 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
   
       if (!$otherUser) return;
       $otherUser.deleting = false;
+    });
+  };
+
+  //=============================================================================================
+  $scope.showBusinessCategory = function(category){
+    if(category === ""){
+      category = "Restaurant"
+    }
+    io.socket.get('/businesses/category/'+ category, function onResponse(data, jwr){
+        $scope.businessList.contents = data;
+        $scope.$apply();
+        console.log("Show Business By Category\n\n");
+        console.log(JSON.stringify(data,null,4));
+    });
+  };
+
+
+  $scope.showAllBusiness = function (){
+      $scope.businessList.loading = true;
+      $scope.businessList.errorMsg = '';
+      
+      io.socket.get('/businesses', function (data, jwr) {
+        if (jwr.error) {
+          $scope.businessList.errorMsg = 'An unexpected error occurred: '+(data||jwr.status);
+          $scope.businessList.loading = false;
+          return;
+        }
+        $scope.businessList.contents = data;
+        $scope.businessList.loading = false;
+        
+        $scope.$apply();
+
+        console.log("Show ALL Business\n\n");
+        console.log(JSON.stringify(data,null,4));
+      });
+  };
+
+  $scope.showReviewBusiness = function(id){
+
+    io.socket.get('/reviews/business/'+ id, function onResponse(data, jwr){
+        $scope.reviewList.contents = data;
+        $scope.$apply();
+        console.log("Show Review By Business\n\n");
+        console.log(JSON.stringify(data,null,4));
+    });
+
+  };
+
+  $scope.showBusinessProfile = function(id){
+      $scope.businessProfile.loading = true;
+      $scope.businessProfile.errorMsg = '';
+
+      io.socket.get('/businesses/'+ id, function onResponse(data, jwr){
+        if (jwr.error) {
+          $scope.businessProfile.errorMsg = data||jwr.status;
+          $scope.businessProfile.loading = false;
+          return;
+        }
+        $scope.businessProfile.contents = data;
+        $scope.businessProfile.loading = false;
+
+        $scope.$apply();
+
+        console.log("Show Single Business By Id\n\n");
+        console.log(JSON.stringify(data,null,4));
+      });
+  };
+
+  $scope.editBusiness = function (businessId){
+
+ 
+    $scope.editbusinessProfile.saving = true;
+    $scope.editbusinessProfile.errorMsg = '';
+
+    return $http.put('/businesses/'+businessId, {
+      name: $scope.editbusinessProfile.properties.name,
+      description: $scope.editbusinessProfile.properties.description,
+      streetaddress: $scope.editbusinessProfile.properties.street,
+      city: $scope.editbusinessProfile.properties.city,
+      province: $scope.editbusinessProfile.properties.province,
+      category: $scope.editbusinessProfile.properties.category
+    })
+    .then(function onSuccess(){
+        $scope.editbusinessProfile.saving = false;
+    })
+    .catch(function onError(sailsResponse){
+      $scope.editbusinessProfile.errorMsg = 'An unexpected error occurred: '+(sailsResponse.data||sailsResponse.status);
+    })
+    .finally(function eitherWay(){
+      $scope.editbusinessProfile.saving = false;
+    });
+  };
+
+  $scope.deleteBusiness = function (businessId){
+
+  
+    $http.delete('/businesses/'+ businessId)
+    .then(function onSuccess(sailsResponse){
+
+    })
+    .catch(function onError(sailsResponse){
+     
+      var errMsg = ''+(sailsResponse.data||sailsResponse.status);
+      toastr.error(errMsg);
+    })
+    .finally(function eitherWay(){
+  
     });
   };
 
