@@ -38,6 +38,9 @@ module.exports.routes = {
   'GET /businesses': 'BusinessController.find',
   'GET /businesses/:id': 'BusinessController.findOne',
   'GET /businesses/city/:city': 'BusinessController.findByCity',
-  'GET /businesses/category/:category': 'BusinessController.findByCategory'
+  'GET /businesses/category/:category': 'BusinessController.findByCategory',
+
+  //Review API
+  'GET /reviews/business/:id': 'ReviewController.findByBusiness'
 
 };
