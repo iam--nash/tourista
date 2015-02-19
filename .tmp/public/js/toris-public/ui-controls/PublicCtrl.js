@@ -189,14 +189,9 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
   };
 
   $scope.showBusinessCategory = function(category){
-<<<<<<< HEAD
     if(category === ""){
       category = "Restaurant"
     }
-
-
-=======
->>>>>>> 08acc916bb7565169ea29cfb6c876131759f46b1
     io.socket.get('/businesses/category/'+ category, function onResponse(data, jwr){
         $scope.businessList.contents = data;
         $scope.$apply();
