@@ -25,9 +25,7 @@ module.exports.policies = {
     updateMyProfile: ['isLoggedIn'],
     comeOnline: ['isLoggedIn'],
     watchAndSubscribeToAll: ['isLoggedIn'],
-
     find: ['isAdmin'],
-    findOne: ['isAdmin'],
     update: ['isAdmin'],
     destroy: ['isAdmin']
   },
