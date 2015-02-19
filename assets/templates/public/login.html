@@ -1,37 +1,48 @@
-    <div class="container">
-        <form ng-submit="submitLoginForm()" class="col-md-6">
-              <!-- Error message -->
-            <ul ng-show="loginForm.topLevelErrorMessage" class="alert alert-danger">
-                <li>
-                  <span>{{loginForm.topLevelErrorMessage}}</span>
-                </li>
-            </ul>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-xs-12">
+            <form ng-submit="submitLoginForm()">
+                <ul ng-show="loginForm.topLevelErrorMessage" class="alert alert-danger">
+                    <li>
+                      <span>{{loginForm.topLevelErrorMessage}}</span>
+                    </li>
+                </ul>
+                <div class="tile tile-login">
+                    <h3 class="logo">Login</h3>
+                    <p class="login">Please enter your email address and password to log in.</p>
+                    <div class="input-icon">
+                      <span class="fa-user fa"></span>
+                      <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
+                    </div>
+                    <div class="input-icon">
+                      <span class="fa-lock fa"></span>
+                      <input ng-model="loginForm.password" type="password" placeholder="Password" name="password" class="form-control">
+                    </div>
+                    <div class="login-action">
+                        <div class="col-md-4">
+                                <a href="#">Forgot your Password?</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">
+                        <span ng-show="!loginForm.loading">Login</span>
+                        <span ng-show="loginForm.loading" class="fa fa-spinner"></span>
+                        <span ng-show="loginForm.loading">Logging in...</span>
+                    </button>
+                    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
 
-            <div class="form-group">
-                <input ng-model="loginForm.email" type="text" placeholder="Email" name="email" class="form-control">
-            </div>
-            <div class="form-group">
-                <input ng-model="loginForm.password" type="password" placeholder="Password" name="password" class="form-control">
-            </div>
-            <a href="#" class="pull-right">Forgot your password?</a><br/><br/>
-            <button type="submit" class="btn btn-success pull-right">
-                <span ng-show="!loginForm.loading">Sign in</span>
-                <span ng-show="loginForm.loading" class="fa fa-spinner"></span>
-                <span ng-show="loginForm.loading">Signing in...</span>
-            </button>
-            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
-        </form>
-      
+                </div>
+            </form>
+        </div>
         <div class="col-md-6">
 
             <center>
                 <h3>No Account Yet?</h3>
                 <a href="#/signup" class="btn btn-success">Signup Now!</a><br/><br/>
                 <p>
-                    Toris is the fun and easy way to find, review and talk about what's great - and not so great - in your local area. It's about real people giving their honest and personal opinions on everything from restaurants and spas to coffee shops and bars.
+                    Tourista1.0 is the fun and easy way to find, review and talk about what's great - and not so great - in your local area. It's about real people giving their honest and personal opinions on everything from restaurants and spas to coffee shops and bars.
                 </p>
             </center>
         </div>
-    </div>
 
-  <!-- Modal for Login -->
+    </div>
+</div>
