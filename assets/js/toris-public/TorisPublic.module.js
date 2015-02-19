@@ -51,6 +51,8 @@ angular.module('TorisPublic')
     templateUrl: 'templates/public/home.html',
     controller: ['$scope', '$location', function($scope, $location) {
         $scope.showAllBusiness();
+
+        $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
     }]
   })
 
@@ -87,6 +89,8 @@ angular.module('TorisPublic')
     templateUrl: 'templates/public/show-business.html',
     controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
       $scope.showBusinessProfile($routeParams.id);
+      
+      $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
     }]
   })
   //Testing route
@@ -97,6 +101,7 @@ angular.module('TorisPublic')
       $scope.showBusinessProfile("54e36513e4b0e69a3d1e9eb5");
       $scope.showBusinessCity("Magalang");
       $scope.showBusinessCategory("Restaurant");
+
       $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
     }]
   })
@@ -106,3 +111,5 @@ angular.module('TorisPublic')
   });
   
  }]);
+
+

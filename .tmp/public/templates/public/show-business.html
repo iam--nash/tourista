@@ -14,12 +14,119 @@
     <span>Loading business data...</span>
   </div>
 
-  <div ng-hide="businessProfile.loading">
-        <h4>{{businessProfile.contents.name}}</h4>
-        <p>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}}</p>
-  </div> 
-
 </div>
+  <div class="container">
+    <h2 ng-hide="businessProfile.loading" class="biz-name biz-indent">{{businessProfile.contents.name}}</h2>
+    <p>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}}</p>
+    <div class="row">
+      <div class="biz-image">
+        <div class="text-center">
+          <img class="img-responsive text-center col-xs-12" ng-src="{{businessProfile.contents.photos[1]}}" style="display:inline; max-height:400px">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Recent Reviews -->
+  <div class="container-fluid">
+    <h3> Recent Reviews </h3>
+    <div class="row">
+      <div class="biz-reviews">
+        <div class="col-lg-8">
+          <div class="panel panel-default">
+
+            <div ng-repeat="review in businessProfile.contents" class="panel-body">
+              <div class="col-lg-2">
+                <div class="user-image">
+                  <img class="img-thumbnail" src="/images/user.jpg">
+                </div>
+              </div>
+              <span class="user-name"><a href="#"> User </a> </span><!--  |
+              <span class="user-location"> <a href="#">Sampernandu </a></span> -->
+              <div class="user-rating">
+                <span id="stars" class="fa fa-star"></span>
+                <span id="stars" class="fa fa-star"></span>
+                <span id="stars" class="fa fa-star"></span>
+                <span id="stars" class="fa fa-star"></span>
+                <span id="stars" class="fa fa-star"></span>
+                <span class="date-rated"> February 14, 2015</span>
+              </div>
+              <div class="col-lg-9 user-review">
+                <p>{{review.review}}</p>
+                
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="panel panel-default panel-biznotif">
+            <div class="panel-body panel-notif">
+              <span class="fa fa-clock-o fa-lg"></span> 
+              <span class="biz-time">Today 7:00 am- 5:00 pm</span>
+              <span class="biz-avail"> Closed Now </span>
+              <div class="biz-menu">
+                <i class="fa fa-spoon fa-lg"></i>
+                <a class="biz-link" href="#"> MENU <i class="fa fa-external-link "></i></a>
+              </div>
+              <div class="biz-price-range">
+                <i class="fa fa-usd "></i>
+                <span> Price Range </span>
+                <span class="price-range"> $11-$30</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel panel-default panel-bizhours">
+            <div class="panel-body panel-header-hours">
+              <h4> Opens </h4>
+            </div>
+            <div class="panel-footer panel-hours">
+                <!-- Table -->
+              <table class="table">
+                <tbody>
+                  <tr>
+                    <th scope="row">Monday</th>
+                    <td>6:00 am </td>
+                    <td>5:00 pm</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Tuesday</th>
+                    <td>6:00 am </td>
+                    <td>5:00 pm</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Wednesday</th>
+                    <td>6:00 am </td>
+                    <td>5:00 pm</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Thursday</th>
+                    <td>6:00 am </td>
+                    <td>5:00 pm</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Friday</th>
+                    <td>6:00 am </td>
+                    <td>5:00 pm</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Saturday</th>
+                    <td>6:00 am </td>
+                    <td>5:00 pm</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Sunday</th>
+                    <td>6:00 am </td>
+                    <td>5:00 pm</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

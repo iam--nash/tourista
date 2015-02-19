@@ -1,6 +1,28 @@
+<div>
+    <h3 class="local-name"> TOURISTA 1.0 | Angeles City</h3>
+  </div>
+  <div class="jumbotron jumbotron-default">
+    <div class="jumbotron-border">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-10 text-right">
+            <h2>Tourista 1.0  is the best way to find great local businesses</h2>
+            <p>
+             People use Tourista 1.0 to search for everything from the city's tastiest burger to the most renowned cardiologist. What will you uncover in your neighborhood?
+            </p>
+          </div>
+
+          <div class="col-xs-2 icon-samples text-center">
+            <img class="img-responsive" src="/images/map.svg">
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
 <!-- Categories of Tourist Destination Widget -->
-<div class="container">
-	<div class="">
+<div class="container-fluid">
+	<div class="row">
 	  	<h3 class="local-name">List of Tourist Destination</h3>
 		<div ng-show="businessList.errorMsg">
 		    <h5>Oops!</h5>
@@ -10,76 +32,52 @@
 		    </code>
 	  	</div>
 
-	  <!---Start of Panel -->
-		<div role="tabpanel" ng-show="businessList.loading">
-			<span class="overlord-loading-spinner fa fa-spinner"></span>
-				<span>Loading businesses...</span>
-		</div>
-	  	<div ng-show="businessList.contents.length === 0">
-	    	<span>No businesses yet.</span>
-	  	</div>
+
 	    <!-- Nav tabs -->
 	    <ul class="nav nav-tabs" role="tablist">
-	      <li role="presentation" class="active">
-	      	<a href="#all" aria-controls="all" role="tab" data-toggle="tab">All</a>
-	      </li>
-	      <li role="presentation">
-	      	<a href="#categ1" aria-controls="categ_1" role="tab" data-toggle="tab">Category 1</a>
-	      </li>
-	      <li role="presentation">
-	      	<a href="#categ2" aria-controls="categ_2" role="tab" data-toggle="tab">Category 2</a>
-	      </li>
-	      <li role="presentation">
-	      	<a href="#categ3" aria-controls="categ_3" role="tab" data-toggle="tab">Category 3</a>
-	      </li>
-	      <li role="presentation">
-	      	<a href="#categ4" aria-controls="categ_4" role="tab" data-toggle="tab">Category 4</a>
-	      </li>
-	      <li role="presentation">
-	      	<a href="#categ5" aria-controls="categ_5" role="tab" data-toggle="tab">Category 5</a>
-	      </li>
+			<li role="presentation">
+				<a ng-click="showBusinessCategory('Restaurant')">Restaurant</a>
+			</li>
+			<li role="presentation">
+				<a ng-click="showBusinessCategory('Coffee and tea')">Coffee and Tea</a>
+			</li>
+			<li role="presentation">
+				<a ng-click="showBusinessCategory('Beauty and Spa')">Beauty and Spa</a>
+			</li>
+			<li role="presentation">
+				<a ng-click="showBusinessCategory('Travel')">Travel</a>
+			</li>
+			<li role="presentation">
+				<a ng-click="showBusinessCategory('Real Estate')">Real Estate</a>
+			</li>
 	    </ul>
 	    <!-- All touris destination-->
-		<div ng-show="!businessList.loading && businessList.contents.length > 0" class="tab-content" align="center">
-			<div role="tabpanel" class="tab-pane fade in active" id="all"> 
+		<div class="tab-content">
+			<div role="tabpanel" class="tab-pane fade in active" id="all">
+				<!---Start of Panel -->
+				<div class="col-xs-12">
+					<div role="tabpanel" ng-show="businessList.loading">
+						<span class="overlord-loading-spinner fa fa-spinner"></span>
+							<span>Loading businesses...</span>
+					</div>
+				  	<div ng-show="businessList.contents.length === 0">
+				    	<span>No businesses yet.</span>
+				    	<br><br><br><br><br><br><br>
+				  	</div>
+			  	</div>
 				<div ng-repeat="business in businessList.contents | orderBy:'name'" class="col-md-3 col-sm-4">
-
 					<div class="thumbnail thumbnail-caption">
 						<img ng-src="{{business.photos[0]}}" class="img-responsive" alt="Business Image">
 						<div class="caption">
 							<a ng-href="#/business/{{business.id}}">
 								<h4 class="business-name">{{business.name}}</h4>
 							</a>
-							
-							<h6 class="review-number">5 Star(need review directive)</h6>
-							<img class="user-image img-responsive" ng-src="/images/user.jpg">
 							<p class="review-text">{{business.street}}, {{business.city}}, {{business.province}}</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<!-- Category 1 -->
-		<div ng-show="!businessList.loading && businessList.contents.length > 0" class="tab-content" align="center">
-			<div role="tabpanel" class="tab-pane fade in active" id="categ1"> 
-				<div ng-repeat="business in businessList.contents | filter:'category.restaurant'" class="col-md-3 col-sm-4">
-
-					<div class="thumbnail thumbnail-caption">
-						<img ng-src="{{business.photos[0]}}" class="img-responsive" alt="Business Image">
-						<div class="caption">
-							<h4 class="business-name">{{business.name}}
-								<a ng-href="#/business/{{business.id}}"></a>
-							</h4>
-							<h6 class="review-number">5 Star(need review directive)</h6>
-							<img class="user-image img-responsive" ng-src="/images/user.jpg">
-							<p class="review-text">{{business.street}}, {{business.city}}, {{business.province}}</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-
 
 	</div>
 </div>
@@ -92,17 +90,17 @@
 		<div class="row">
 
 			<div class="col-sm-8">
-				<div class="panel panel-default">
+				<div ng-repeat="review in reviewList.contents " class="panel panel-default">
 					<div class="panel-body">
 						<div class="col-lg-2">
 							<div class="user-image">
-								<img class="img-thumbnail" src="http://placehold.it/80x80">
+								<img class="img-thumbnail" src="/images/user.jpg">
 							</div>
 						</div>
 						<span class="user-name">
 							<a href="userdashboard.html">{name}</a>
-						</span> |
-						<span class="user-location"> <a href="#">{location}</a></span>
+						</span> <!-- |
+						<span class="user-location"> <a href="#">{location}</a></span> -->
 						<div class="user-rating">
 							<span id="stars" class="fa fa-star"></span>
 							<span id="stars" class="fa fa-star"></span>
@@ -110,10 +108,10 @@
 							<span id="stars" class="fa fa-star"></span>
 							<span id="stars" class="fa fa-star"></span>
 
-							<span class="date-rated">{date-posted}</span>
+							<span class="date-rated">{{dateCreated}}</span>
 						</div>
 						<div class="col-lg-9 user-review">
-							<p>{user-review}</p>
+							<p>{{review.review}}</p>
 						</div>
 					</div>
 				</div>
