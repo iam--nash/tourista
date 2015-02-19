@@ -54,7 +54,9 @@ this["JST"]["assets/templates/public/documentation.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += '<div class="container">\r\n\t\r\n</div>';
+__p += '<div class="container">\r\n\t<form ng-submit="submitReviewForm()">   \r\n\t\t<h4>Create Review</h4>\r\n        <div class="row">\r\n            <label >Review</label>\r\n        \t<input class="col-sm-12" type="text" name="review" ng-model="reviewForm.review" required>\r\n        </div>\r\n        <div class="row">\r\n            <label >Rating: 5, 4, 3, 2, 1</label>\r\n            <input class="col-sm-12" type="text" name="rating" ng-model="reviewForm.rating" required>\r\n        </div>\r\n        <div class="row">\r\n            <label >BusinessId: 54e36a84e4b0e69a3d1e9f0b</label></br>\r\n            <input class="col-sm-12" type="text" name="businessId" ng-model="reviewForm.businessId" >\r\n        </div>\r\n        <div class="row">\r\n            <label >UserId: 54e45c0797003edc04686139</label></br>\r\n            <input class="col-sm-12" type="text" name="userId" ng-model="reviewForm.userId" >\r\n        </div>\r\n        \r\n            \r\n      \r\n        \t\r\n        <br/><br/>\r\n\t\t<div class="row">\r\n\t\t\t<button class="btn btn-primary btn-lg btn-block" type="submit">\r\n                <span>Create Review</span>\r\n            </button>\r\n            <input type="hidden" name="_csrf" value="' +
+((__t = ( _csrf )) == null ? '' : __t) +
+'" />\r\n\t\t</div>\r\n    </form>\r\n\r\n<!--\r\n    <button ng-click="showBusinessCategory(\'Restaurant\')">Restaurant</button>\r\n    <button ng-click="showBusinessCategory(\'Travel\')">Travel</button>\r\n\r\n    <ul>\r\n        <li ng-repeat="business in businessList.contents">\r\n            {{business.name}}\r\n        </li>\r\n    </ul>\r\n-->\r\n\r\n\r\n</div>';
 
 }
 return __p

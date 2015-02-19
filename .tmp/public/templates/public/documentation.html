@@ -1,3 +1,45 @@
 <div class="container">
-	
+	<form ng-submit="submitReviewForm()">   
+		<h4>Create Review</h4>
+        <div class="row">
+            <label >Review</label>
+        	<input class="col-sm-12" type="text" name="review" ng-model="reviewForm.review" required>
+        </div>
+        <div class="row">
+            <label >Rating: 5, 4, 3, 2, 1</label>
+            <input class="col-sm-12" type="text" name="rating" ng-model="reviewForm.rating" required>
+        </div>
+        <div class="row">
+            <label >BusinessId: 54e36a84e4b0e69a3d1e9f0b</label></br>
+            <input class="col-sm-12" type="text" name="businessId" ng-model="reviewForm.businessId" >
+        </div>
+        <div class="row">
+            <label >UserId: 54e45c0797003edc04686139</label></br>
+            <input class="col-sm-12" type="text" name="userId" ng-model="reviewForm.userId" >
+        </div>
+        
+            
+      
+        	
+        <br/><br/>
+		<div class="row">
+			<button class="btn btn-primary btn-lg btn-block" type="submit">
+                <span>Create Review</span>
+            </button>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+		</div>
+    </form>
+
+<!--
+    <button ng-click="showBusinessCategory('Restaurant')">Restaurant</button>
+    <button ng-click="showBusinessCategory('Travel')">Travel</button>
+
+    <ul>
+        <li ng-repeat="business in businessList.contents">
+            {{business.name}}
+        </li>
+    </ul>
+-->
+
+
 </div>
