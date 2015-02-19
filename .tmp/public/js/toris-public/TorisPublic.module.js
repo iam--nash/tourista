@@ -90,6 +90,7 @@ angular.module('TorisPublic')
       $scope.showBusinessProfile($routeParams.id);
       
       $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
+      $scope.getTotalReview("54e36a84e4b0e69a3d1e9f0b");
     }]
   })
 

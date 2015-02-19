@@ -39,6 +39,12 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     contents: []
   };
 
+  //Total Review - show-business.html
+  $scope.totalReview = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
 
 
 
@@ -215,7 +221,11 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
   };
 
   $scope.getTotalReview = function(id){
+
     io.socket.get('/reviews/business/count/'+ id, function onResponse(data, jwr){
+        $scope.totalReview.contents = data;
+        $scope.$apply();
+
         console.log("Show Business Review Count\n\n");
         console.log(JSON.stringify(data,null,4));
     });

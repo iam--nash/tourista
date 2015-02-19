@@ -17,7 +17,7 @@
 </div>
   <div class="container">
     <h2 ng-hide="businessProfile.loading" class="biz-name biz-indent">{{businessProfile.contents.name}}</h2>
-    <p>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}}</p>
+    <p>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}}, Total Reviews : {{businessProfile.contents.totalReview}} </p>
     <div class="row">
       <div class="biz-image">
         <div class="text-center">
@@ -26,15 +26,23 @@
       </div>
     </div>
   </div>
-  <!-- Recent Reviews -->
+
   <div class="container-fluid">
-    <h3> Recent Reviews </h3>
+    <div>
+      <h3 class=""> Recent Reviews </h3>
+      <h4 class="pull-right"></h4>
+
+    </div>
     <div class="row">
+      <!-- Recent Reviews -->
       <div class="biz-reviews">
         <div class="col-lg-8">
           <div class="panel panel-default">
-
-            <div ng-repeat="review in businessProfile.contents" class="panel-body">
+            <div ng-show="businessProfile.contents.review === 0">
+              <span>No review yet.</span>
+              <br><br><br><br><br><br><br>
+            </div>
+            <div ng-repeat="review in reviewList.contents" class="panel-body">
               <div class="col-lg-2">
                 <div class="user-image">
                   <img class="img-thumbnail" src="/images/user.jpg">
@@ -48,7 +56,7 @@
                 <span id="stars" class="fa fa-star"></span>
                 <span id="stars" class="fa fa-star"></span>
                 <span id="stars" class="fa fa-star"></span>
-                <span class="date-rated"> February 14, 2015</span>
+                <span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
               </div>
               <div class="col-lg-9 user-review">
                 <p>{{review.review}}</p>
@@ -58,6 +66,7 @@
 
           </div>
         </div>
+        <!-- Events -->
         <div class="col-lg-4">
           <div class="panel panel-default panel-biznotif">
             <div class="panel-body panel-notif">

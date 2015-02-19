@@ -231,3 +231,18 @@ Rotation and Text Slide
   text-align: center;
   background-color: #CCCCCC;
 }
+@media screen and (max-width: 767px){
+  .jumbotron {
+    padding:  10px 10px;
+  }
+  .jumbotron-default .col-xs-12 > p {
+    font-size:  14px;
+    text-align:   center;
+  }
+
+}
+@media screen and (max-width:   992px){
+  .jumbotron-default .pull-right > h2 {
+    margin:   24px 0px 10px;
+  }
+}
