@@ -111,6 +111,7 @@ angular.module('TorisPublic')
       $scope.showBusinessCity("Magalang");
       $scope.showBusinessCategory("Restaurant");
 
+      $scope.showAllReviews();
       $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
       $scope.getTotalReview("54e36a84e4b0e69a3d1e9f0b");
       $scope.getAverageRating("54e36a84e4b0e69a3d1e9f0b");
