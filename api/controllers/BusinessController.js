@@ -23,7 +23,16 @@ module.exports = {
           city: business.city,
           province: business.province,
           category: business.category,
-          photos: business.photos
+          center:{
+            latitude: business.map.latitude,
+            longitude: business.map.longitude
+          },
+          marker:{
+            latitude: business.map.latitude,
+            longitude: business.map.longitude
+          },
+          photos: business.photos,
+          dateCreated: business.createdAt
         });
       });
 
@@ -50,7 +59,16 @@ module.exports = {
         city: business.city,
         province: business.province,
         category: business.category,
-        photos: business.photos
+        center:{
+          latitude: business.map.latitude,
+          longitude: business.map.longitude
+        },
+        marker:{
+          latitude: business.map.latitude,
+          longitude: business.map.longitude
+        },
+        photos: business.photos,
+        dateCreated: business.createdAt
       });
     });
   },
@@ -109,7 +127,16 @@ module.exports = {
           city: business.city,
           province: business.province,
           category: business.category,
-          photos: business.photos
+          center:{
+            latitude: business.map.latitude,
+            longitude: business.map.longitude
+          },
+          marker:{
+            latitude: business.map.latitude,
+            longitude: business.map.longitude
+          },
+          photos: business.photos,
+          dateCreated: business.createdAt
         });
       });
 
@@ -137,7 +164,16 @@ module.exports = {
           city: business.city,
           province: business.province,
           category: business.category,
-          photos: business.photos
+          center:{
+            latitude: business.map.latitude,
+            longitude: business.map.longitude
+          },
+          marker:{
+            latitude: business.map.latitude,
+            longitude: business.map.longitude
+          },
+          photos: business.photos,
+          dateCreated: business.createdAt
         });
       });
 
