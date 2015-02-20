@@ -78,6 +78,17 @@ body > .ng-scope > div > div > .nav-tabs {
 .biz-indent{
   text-indent: 10px;
 }
+/* Google Map */
+#map_container{
+  position: relative;
+}
+#map{
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 22.25%;
+    padding-top: 30px;
+    position: relative;
+}
 
  /*Biz Reviews----------------------*/
 #stars{
@@ -257,6 +268,9 @@ Rotation and Text Slide
 .tourista-copyrights{
   text-align: center;
   background-color: #CCCCCC;
+}
+.container-fluid .col-lg-8 > div > div:not(:last-child) {
+  border-bottom: 1px solid #d6e1e5;
 }
 @media screen and (max-width: 767px){
   .jumbotron {

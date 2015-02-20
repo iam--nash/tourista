@@ -50,6 +50,11 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     errorMsg: '',
     contents: []
   };
+  $scope.userInfo = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
 
 
 
@@ -133,6 +138,8 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
           
           return;
         }
+        $scope.userInfo.contents = data;
+        $scope.$apply();
 
         console.log("Show Single User By Id\n\n");
         console.log(JSON.stringify(data,null,4));

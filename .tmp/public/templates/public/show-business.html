@@ -17,8 +17,12 @@
 
 </div>
   <div ng-hide="businessProfile.loading" class="container">
-    <h2 class="biz-name biz-indent">{{businessProfile.contents.name}}</h2>
+    <h2 class="biz-name">{{businessProfile.contents.name}} </h2>
     <p>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}} </p>
+    <angular-ratings ng-model="AveRating.contents.averagerate"></angular-ratings>
+    <div class="">
+      <button class="btn btn-danger" data-toggle="modal" data-target=".modal-review"><i class="fa fa-star"></i> Write a Review </button>    
+    </div>
     <div class="row">
       <div class="biz-image">
         <div class="text-center">
@@ -29,34 +33,33 @@
   </div>
 
   <div class="container-fluid">
-    <div>
-      <h3 class=""> Recent Reviews </h3>
-      <h4 class="pull-right"></h4>
-
-    </div>
     <div class="row">
       <!-- Recent Reviews -->
       <div class="biz-reviews">
         <div class="col-lg-8">
+          <h3 class="">Reviews
+            <span class="pull-right">({{totalReview.contents.numCount}})</span>
+          </h3>
           <div class="panel panel-default">
             <div ng-show="review.reviewList.contents === 0">
               <span>No review yet.</span>
               <br><br><br><br><br><br><br>
             </div>
-            <div ng-repeat="review in reviewList.contents | orderBy: '-dateCreated' | limitTo:'10'" class="panel-body">
-              <div class="col-lg-2">
+            <div ng-repeat="review in reviewList.contents | orderBy: '-dateCreated' | limitTo:'5'" class="panel-body">
+              <div class="col-sm-2 col-lg-1">
                 <div class="user-image"> 
-                  <img class="img-thumbnail" src="/images/user.jpg">
+                  <img class="img-thumbnail" src="{{userInfo.contents.gravatarUrl}}">
                 </div>
               </div>
-              <span class="user-name">
-                <a href="#">{{review.userid}}</a>
-              </span> |
-              <angular-ratings ng-model="review.rating"></angular-ratings>
-              <div class="user-rating">
+              <div class="col-sm-10 col-lg-11 user-review">
                 <span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
-              </div>
-              <div class="col-lg-9 user-review">
+                <span class="user-name alert-primary">
+                  <a href="#">{{userInfo.contents.name}}</a>
+                </span>&nbsp;|
+                <span class="alert-danger">{{userInfo.contents.title}}</span>
+                <div class="user-rating">
+                  <angular-ratings ng-model="review.rating"></angular-ratings>
+                </div>
                 <p>{{review.review}}</p>
                 
               </div>
@@ -66,6 +69,7 @@
         </div>
         <!-- Events -->
         <div class="col-lg-4">
+          <h3>&nbsp;</h3>
           <div class="panel panel-default panel-biznotif">
             <div class="panel-body panel-notif">
               <span class="fa fa-clock-o fa-lg"></span> 

@@ -1693,7 +1693,7 @@ a.list-group-item-danger.active:focus {
   color: #5e6969;
 }
 .navbar-nav.navbar-icons > li > a {
-  padding: 27px 10px;
+  padding: 28px 10px;
   font-weight: bold;
 }
 @media (min-width: 768px) {
