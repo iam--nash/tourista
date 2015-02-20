@@ -46,15 +46,15 @@
       <!-- Recent Reviews -->
       <div class="biz-reviews">
         <div class="col-lg-8">
-          <h3 class="">Reviews
+          <h3 class="">{{businessProfile.contents.name}} Reviews
             <span class="pull-right">({{totalReview.contents.numCount}})</span>
           </h3>
           <div class="panel panel-default">
-            <div ng-show="review.reviewList.contents === 0">
+            <div ng-show="totalReview.contents.numCount === 0">
               <span>No review yet.</span>
               <br><br><br><br><br><br><br>
             </div>
-            <div ng-repeat="review in reviewList.contents | orderBy: '-dateCreated'" class="panel-body">
+            <div ng-repeat="review in reviewListbyBusiness.contents | orderBy: '-dateCreated'" class="panel-body">
               <div class="col-sm-2 col-lg-1">
                 <div class="user-image"> 
                   <img class="img-thumbnail" src="{{userInfo.contents.gravatarUrl}}">
@@ -66,6 +66,7 @@
                   <a href="#">{{userInfo.contents.name}}</a>
                 </span>&nbsp;|
                 <span class="alert-danger">{{userInfo.contents.title}}</span>
+                <span class="text-muted">Wrote a Review</span>
                 <div class="user-rating">
                   <angular-ratings ng-model="review.rating"></angular-ratings>
                 </div>

@@ -20,27 +20,7 @@
 		</div>
 	</div>
 </div>
-<!-- <div id="{{businessProfile}}" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li ng-repeat="business in businessList.contents" data-target="{{businessProfile}}" data-slide-to="0" class="">
-  </ol>
 
-  <div class="carousel-inner" role="listbox">
-    <div ng-repeat="business in businessList.contents" class="item">
-      <img src="{{business.photos[0]}}" alt="">
-      <div class="carousel-caption">{{business.name}}</div>
-    </div>
-  </div>
-  <a class="left carousel-control" href="#{{businessProfile}}" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#{{businessProfile}}" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div> -->
-<!-- Categories of Tourist Destination Widget -->
 <div class="container-fluid">
 	<div class="row">
 	  	<h3 class="local-name">List of Tourist Destination</h3>
@@ -107,26 +87,29 @@
 <!-- Recent Activity -->
 <div class="recentactivity-wrap">
 	<div class="container-fluid">
-	  	<h3 class="title-heading"> Recent Activity</h3>
+	  	<h3 class="title-heading">Recent Review</h3>
 		<div class="row">
 
 			<div class="col-sm-8">
 				<div ng-repeat="review in reviewList.contents | orderBy:'-dateCreated' | limitTo:10" class="panel panel-default">
 					<div class="panel-body">
-						<div class="col-lg-2">
+						<div class="col-sm-2 col-lg-1">
 							<div class="user-image">
-								<img class="img-thumbnail" src="/images/user.jpg">
+								<img class="img-thumbnail img-responsive" src="{{userInfo.contents.gravatarUrl}}">
 							</div>
 						</div>
-						<span class="user-name">
-							<a href="userdashboard.html">{name}</a> &nbsp;|
-						</span> <!-- |
-						<span class="user-location"> <a href="#">{location}</a></span> -->
-						<div class="user-rating">
-
+						<div class="col-sm-10 col-lg-11 user-review">
 							<span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
-						</div>
-						<div class="col-lg-9 user-review">
+							<span class="user-name">
+								<a href="userdashboard.html">{{userInfo.contents.name}}</a> &nbsp;|
+							</span>
+							<span class="alert-danger">{{userInfo.contents.title}}</span>
+							<p class="text-muted">Wrote a Review for
+								<a href="#/business/{{business.id}}">{{review.businessid}}</a>
+							</p>
+							<div class="user-rating">
+	                 			<angular-ratings ng-model="review.rating"></angular-ratings>
+							</div>
 							<p>{{review.review}}</p>
 						</div>
 					</div>
