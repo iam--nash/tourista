@@ -1154,7 +1154,10 @@ label {
   font-family: "SourceSansProSemiBold", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: 2.4;
-  color: #364347;
+  color: #fff;
+}
+#bs-example-navbar-collapse-1 > div:nth-child(2) > div > span > button {
+  padding-bottom: 5px;
 }
 .form-control {
   border: 1px solid #d6e1e5;
@@ -1235,7 +1238,7 @@ fieldset[disabled] .form-control {
 .has-error .checkbox,
 .has-error .radio-inline,
 .has-error .checkbox-inline {
-  color: #364347;
+  color: #fff;
 }
 .has-error .form-control {
   border-color: #f84545;
@@ -2678,7 +2681,7 @@ p.login {
   font-size: 14px;
   padding: 5px 5px 5px 5px;
   text-align: left;
-  height: 150px;
+  height: 110px;
 
 }
 .thumbnail.thumbnail-caption > img,
