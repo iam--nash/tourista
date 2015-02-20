@@ -63,7 +63,6 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
   };
 
 
-
   $scope.submitLoginForm = function (){
     $scope.loginForm.loading = true;
     $scope.loginForm.topLevelErrorMessage = null;
@@ -137,17 +136,16 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     });
   };
 
-  $scope.showUserProfile = function(id){
+  $scope.showUserProfile = function(id, index){
 
       io.socket.get('/users/'+ id, function onResponse(data, jwr){
         if (jwr.error) {
-          
           return;
         }
+        console.log(index);        
+        $("#username-" + index).append(data.name);
 
-        $scope.userInfo.contents = data;
-        $scope.$apply();
-
+        
         console.log("Show Single User By Id\n\n");
         console.log(JSON.stringify(data.name,null,4));
       });
@@ -263,14 +261,24 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
   };
 
   $scope.showReviewBusiness = function(id){
+    $scope.reviewListbyBusiness.loading = true;
+    $scope.reviewListbyBusiness.errorMsg = '';
 
     io.socket.get('/reviews/business/'+ id, function onResponse(data, jwr){
+        if (jwr.error) {
+          $scope.reviewListbyBusiness.errorMsg = 'An unexpected error occurred: '+(data||jwr.status);
+          $scope.reviewListbyBusiness.loading = false;
+          return;
+        }
+        
         $scope.reviewListbyBusiness.contents = data;
+        $scope.reviewListbyBusiness.loading = false;
         $scope.$apply();
 
         console.log("Show Review By Business\n\n");
         console.log(JSON.stringify(data,null,4));
     });
+    
   };
 
   $scope.getTotalReview = function(id){
@@ -282,7 +290,7 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
         console.log("Show Business Review Count\n\n");
         console.log(JSON.stringify(data,null,4));
     });
-  }
+  };
 
   $scope.getAverageRating = function(id){
     io.socket.get('/reviews/business/rating/'+ id, function onResponse(data, jwr){
@@ -292,6 +300,6 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
         console.log("Show Business Average Rating\n\n");
         console.log(JSON.stringify(data,null,4));
     });
-  }
+  };
 
 }]);

@@ -50,7 +50,6 @@ angular.module('TorisPublic')
   .when('/', {
     templateUrl: 'templates/public/home.html',
     controller: ['$scope', '$location', function($scope, $location, $routeParams) {
-      $scope.showUserProfile("54e649d408f9cd5c168ac9d8");
     
       $scope.showAllBusiness();
       $scope.showAllReviews();
@@ -94,7 +93,7 @@ angular.module('TorisPublic')
       $scope.getTotalReview($routeParams.id);
       $scope.getAverageRating($routeParams.id);
 
-      $scope.showUserProfile("54e649d408f9cd5c168ac9d8");
+      //$scope.showUserProfile("54e649d408f9cd5c168ac9d8");
     }]
   })
 
