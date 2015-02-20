@@ -169,6 +169,7 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
       });
   };
 
+
   $scope.showBusinessProfile = function(id){
       $scope.businessProfile.loading = true;
       $scope.businessProfile.errorMsg = '';
@@ -214,6 +215,25 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     });
   };
 
+  $scope.showAllReviews = function (){
+      $scope.reviewList.loading = true;
+      $scope.reviewList.errorMsg = '';
+      
+      io.socket.get('/reviews', function (data, jwr) {
+        if (jwr.error) {
+          $scope.reviewList.errorMsg = 'An unexpected error occurred: '+(data||jwr.status);
+          $scope.reviewList.loading = false;
+          return;
+        }
+        $scope.reviewList.contents = data;
+        $scope.reviewList.loading = false;
+        
+        $scope.$apply();
+
+        console.log("Show ALL Reviews\n\n");
+        console.log(JSON.stringify(data,null,4));
+      });
+  };
 
   $scope.showReviewBusiness = function(id){
 
