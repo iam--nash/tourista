@@ -43,18 +43,17 @@
               <span>No review yet.</span>
               <br><br><br><br><br><br><br>
             </div>
-            <div ng-repeat="review in reviewList.contents" class="panel-body">
+            <div ng-repeat="review in reviewList.contents | orderBy: '-dateCreated' | limitTo:'10'" class="panel-body">
               <div class="col-lg-2">
-                <div class="user-image">
+                <div class="user-image"> 
                   <img class="img-thumbnail" src="/images/user.jpg">
                 </div>
               </div>
-              <span class="user-name"><a href="#"> User </a> </span><!--  |
-              <span class="user-location"> <a href="#">Sampernandu </a></span> -->
+              <span class="user-name">
+                <a href="#">{{review.userid}}</a>
+              </span> |
+              <angular-ratings ng-model="review.rating"></angular-ratings>
               <div class="user-rating">
-                <div class="span3">
-                  <angular-ratings ng-model="review.Rating"></angular-ratings>
-                </div>
                 <span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
               </div>
               <div class="col-lg-9 user-review">

@@ -54,7 +54,6 @@ angular.module('TorisDashboard')
     templateUrl: 'templates/dashboard/home.html',
     controller: ['$scope', '$location', function($scope, $location) {
       $scope.showAllBusiness();
-      $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
     }]
   })
 
