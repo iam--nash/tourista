@@ -16,17 +16,26 @@
 
 
 </div>
-  <div ng-hide="businessProfile.loading" class="container">
+  <div ng-hide="businessProfile.loading" class="container-fluid">
+    <div class="col-xs-12">
     <h2 class="biz-name">{{businessProfile.contents.name}} </h2>
-    <p>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}} </p>
+    <span>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}} </span>
     <angular-ratings ng-model="AveRating.contents.averagerate"></angular-ratings>
-    <div class="">
-      <button class="btn btn-danger" data-toggle="modal" data-target=".modal-review"><i class="fa fa-star"></i> Write a Review </button>    
     </div>
     <div class="row">
-      <div class="biz-image">
+      <div class="biz-image col-xs-8">
         <div class="text-center">
           <img class="img-responsive text-center col-xs-12" ng-src="{{businessProfile.contents.photos[0]}}" style="display:inline; max-height:400px">
+        </div>
+      </div>
+      <div class="biz-image col-xs-4">
+        <div class="panel panel-default panel-event">
+          <div class="panel-heading event-heading">
+            <h3 class="panel-title "> Business Map </h3>
+          </div>
+          <div class="" align="center">
+            <img src="http://placehold.it/408x182">
+          </div>
         </div>
       </div>
     </div>
@@ -45,7 +54,7 @@
               <span>No review yet.</span>
               <br><br><br><br><br><br><br>
             </div>
-            <div ng-repeat="review in reviewList.contents | orderBy: '-dateCreated' | limitTo:'5'" class="panel-body">
+            <div ng-repeat="review in reviewList.contents | orderBy: '-dateCreated'" class="panel-body">
               <div class="col-sm-2 col-lg-1">
                 <div class="user-image"> 
                   <img class="img-thumbnail" src="{{userInfo.contents.gravatarUrl}}">
