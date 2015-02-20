@@ -62,6 +62,8 @@ angular.module('TorisDashboard')
     templateUrl: 'templates/dashboard/profile.html',
     controller: ['$scope', '$location', function($scope, $location) {
       $scope.showReviewUser($scope.me.id);
+      $scope.showAllBusiness();
+      $scope.showBusinessProfile();
     }]
   })
 

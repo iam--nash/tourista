@@ -1154,6 +1154,8 @@ label {
   font-family: "SourceSansProSemiBold", Helvetica, Arial, sans-serif;
   font-weight: normal;
   line-height: 2.4;
+}
+label.login {
   color: #fff;
 }
 #bs-example-navbar-collapse-1 > div:nth-child(2) > div > span > button {
@@ -2622,8 +2624,12 @@ h1,
   font-size: 36px;
 }
 h2,
-.h2 {
+.h2,
+ {
   font-size: 30px;
+}
+h2.biz-name {
+  display: inline-block;;
 }
 h3,
 .h3 {
