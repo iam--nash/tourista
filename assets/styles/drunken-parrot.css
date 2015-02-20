@@ -1827,6 +1827,7 @@ a.list-group-item-danger.active:focus {
 }
 .nav-tabs {
  font-weight: bold;
+ margin-bottom: 5px;
 }
 .nav-tabs > li > a:hover {
   border-color: transparent;
