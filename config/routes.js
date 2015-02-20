@@ -41,7 +41,6 @@ module.exports.routes = {
   'DELETE /businesses/:id': 'BusinessController.delete',
   'GET /businesses/city/:city': 'BusinessController.findByCity',
   'GET /businesses/category/:category': 'BusinessController.findByCategory',
-  
 
   //Review API
   'GET /reviews': 'ReviewController.find',

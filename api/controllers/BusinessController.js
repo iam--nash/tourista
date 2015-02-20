@@ -99,11 +99,27 @@ module.exports = {
       if(err){
         console.log(err);
       }
-
       return res.json({
         business: newBusiness
       })
     });
+  },
+
+  createBusiness: function(req,res){
+      Business.create({
+        name: req.param('name'),
+        description: req.param('description'),
+        streetaddress: req.param('street'),
+        city: req.param('city'),
+        province: req.param('province'),
+        category: req.param('category'),
+        photos: ["images/image-business/restaurantimage1.jpg"],
+        map: req.param('map')
+      },function businessCreated(err, newBusiness){
+        if(err) return res.negotiate(err);
+
+        console.log("success");
+      });
   },
 
 

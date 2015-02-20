@@ -154,8 +154,6 @@ angular.module('TorisDashboard')
         $location.replace();
         return;
       }
-
-
     
       $scope.userProfile.loading = false;
       $scope.userProfile.errorMsg = '';

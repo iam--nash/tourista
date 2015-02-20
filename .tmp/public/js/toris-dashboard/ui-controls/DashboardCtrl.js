@@ -82,6 +82,16 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
     contents: []
   };
 
+  $scope.reviewForm = {
+    loading: false,
+    topLevelErrorMessage: ''
+  };
+
+  $scope.newBusinessForm = {
+    loading: false,
+    topLevelErrorMessage: ''
+  };
+
 
   $scope.me = window.SAILS_LOCALS.me;
 
@@ -93,8 +103,6 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
       console.error('Error announcing new socket connection to Sails:',jwr);
       return;
     }
-
-
   });
 
 
@@ -546,6 +554,58 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
     .finally(function eitherWay(){
   
     });
+  };
+
+  $scope.submitNewBusinessForm = function(){
+    
+    $http.post('/businesses/new', {
+      
+      name: $scope.newBusinessForm.name,
+      description: $scope.newBusinessForm.description,
+      street: $scope.newBusinessForm.street,
+      city: $scope.newBusinessForm.city,
+      province: $scope.newBusinessForm.province,
+      category: $scope.newBusinessForm.category,
+      map:{
+        latitude: $scope.newBusinessForm.latitude,
+        longitude: $scope.newBusinessForm.longitude
+      }  
+    })
+    .then(function onSuccess (){
+      console.log("Success");
+    })
+    .catch(function onError(sailsResponse) {
+
+      console.log(sailsResponse);
+      
+    })
+    .finally(function eitherWay(){
+ 
+    });
+
+  };
+
+  $scope.submitReviewForm = function(){
+    
+    $http.post('/reviews/new', {
+      
+      userid: $scope.reviewForm.userId,
+      businessid: $scope.reviewForm.businessId,
+      review: $scope.reviewForm.review,
+      rating: $scope.reviewForm.rating
+    })
+    .then(function onSuccess (){
+      console.log("Success");
+    })
+    .catch(function onError(sailsResponse) {
+
+      console.log(sailsResponse);
+      
+    })
+    .finally(function eitherWay(){
+ 
+    });
+
   };
 
 }]);

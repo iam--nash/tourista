@@ -1,4 +1,4 @@
-
+<div class="container">
 <div class="alert alert-info toggle" ng-show="userProfile.errorMsg">
   <h5>Oops!</h5>
   <p>Looks like an error occurred.  Please try again later.</p>
@@ -14,8 +14,8 @@
 </div>
 
 
-<div class="col-md-6">
-  <div class="panel panel-default">
+<div class="col-md-offset-2 col-md-8 col-md-offset-2">
+  <div class="panel panel-default" style="background-color:gray">
     <div class="panel-heading">
       <h4>Edit Profile</h4>
     </div>
@@ -36,7 +36,7 @@
           <input type="text" class="form-control" placeholder="jon@winterfell.net" ng-model="userProfile.properties.email">
         </div>
 
-        <div class="control-group form-group col-md-12">
+        <div class="control-group form-group col-md-offset-5 col-md-2 col-md-offset-5">
           <label>Administrator?</label>
           <input type="checkbox" class="form-control" ng-model="userProfile.properties.admin">
         </div>
@@ -50,4 +50,4 @@
     </div>
   </div>
 </div>
-
+</div>

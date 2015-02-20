@@ -39,8 +39,7 @@ module.exports = {
     },
 
     photos:{
-      type: 'array',
-      default: []
+      type: 'array'
     },
 
     map:{

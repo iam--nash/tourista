@@ -1,25 +1,28 @@
-
-<div ng-show="userProfile.errorMsg">
-  <h5>Oops!</h5>
-  <p>Looks like an error occurred.  Please try again later.</p>
-  <code>
-    {{errorMsg}}
-  </code>
-</div>
-
-
-<div ng-show="userProfile.loading">
-  <span class="overlord-loading-spinner fa fa-spinner"></span>
-  <span>Loading user data...</span>
-</div>
-
-<div ng-hide="userProfile.loading">
-  <div class="col-md-3">
-    <img ng-src="{{userProfile.properties.gravatarUrl}}"/>
+<div class="container">
+  
+  <div ng-show="userProfile.errorMsg">
+    <h5>Oops!</h5>
+    <p>Looks like an error occurred.  Please try again later.</p>
+    <code>
+      {{errorMsg}}
+    </code>
   </div>
-  <div class="col-md-3">
-    <h1> {{userProfile.properties.name}}</h1>
-    <h3> {{userProfile.properties.title}} </h3>
-    <a href="mailto:{{userProfile.properties.email}}">{{userProfile.properties.email}}</a>
+
+
+  <div ng-show="userProfile.loading">
+    <span class="overlord-loading-spinner fa fa-spinner"></span>
+    <span>Loading user data...</span>
   </div>
+
+  <div ng-hide="userProfile.loading">
+    <div class="col-md-3">
+      <img ng-src="{{userProfile.properties.gravatarUrl}}"/>
+    </div>
+    <div class="col-md-3">
+      <h1> {{userProfile.properties.name}}</h1>
+      <h3> {{userProfile.properties.title}} </h3>
+      <a href="mailto:{{userProfile.properties.email}}">{{userProfile.properties.email}}</a>
+    </div>
+  </div>
+
 </div>
