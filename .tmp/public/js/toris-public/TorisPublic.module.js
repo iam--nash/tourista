@@ -90,6 +90,8 @@ angular.module('TorisPublic')
       
       $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
       $scope.getTotalReview("54e36a84e4b0e69a3d1e9f0b");
+      $scope.getAverageRating("54e36a84e4b0e69a3d1e9f0b");
+      $scope.showUserProfile("54e649d408f9cd5c168ac9d8");
     }]
   })
 
