@@ -21,6 +21,7 @@
     <h2 class="biz-name">{{businessProfile.contents.name}} </h2>
     <span>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}} </span>
     <angular-ratings ng-model="AveRating.contents.averagerate"></angular-ratings>
+    Average Rating : {{AveRating.contents.averagerate}}
     </div>
     <div class="row">
       <div class="biz-image col-xs-8">
@@ -70,7 +71,7 @@
                 <div class="user-rating">
                   <angular-ratings ng-model="review.rating"></angular-ratings>
                 </div>
-                <p>{{review.review}}</p>
+                <p>{{review.review}} {{review.id}}</p>
                 
               </div>
             </div>

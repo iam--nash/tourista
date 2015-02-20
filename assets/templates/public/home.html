@@ -105,7 +105,7 @@
 							</span>
 							<span class="alert-danger">{{userInfo.contents.title}}</span>
 							<p class="text-muted">Wrote a Review for
-								<a href="#/business/{{business.id}}">{{review.businessid}}</a>
+								<a href="#/business/{{review.businessid}}">{{review.businessid}}</a>
 							</p>
 							<div class="user-rating">
 	                 			<angular-ratings ng-model="review.rating"></angular-ratings>
@@ -148,65 +148,21 @@
 	</div>
 </div>
 <!-- /Recent Activity -->
+
 <!-- New Business -->
 <div class="container-fluid" >
 <h3 class="title-heading"> New Business in Tourista 1.0</h3>
 <div class="row">
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-    <div class="newbiz_hover ">
+  <div ng-repeat="business in businessList.contents | limitTo:'4' | orderBy:'-dateCreated'" class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+    <div class="newbiz_hover">
       <p class="newbiz-p">
-        <img src="http://placehold.it/500x330" class="img-responsive" alt="">
+        <img ng-src="{{business.photos[0]}}" alt="">
       </p>
       <div class="caption">
         <div class="blur"></div>
         <div class="caption-text">
-          <h3 class="newbiz-name">NEW BIZ NAME</h3>
-          <p class="newbiz-p">Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor...</p>
-          <a class="btn btn-default" href="biz.html"> More Info</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-    <div class="newbiz_hover ">
-      <p class="newbiz-p">
-        <img src="http://placehold.it/500x330" class="img-responsive" alt="">
-      </p>
-      <div class="caption">
-        <div class="blur"></div>
-        <div class="caption-text">
-          <h3 class="newbiz-name">NEW BIZ NAME</h3>
-          <p class="newbiz-p">Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor...</p>
-          <a class="btn btn-default" href="biz.html"> More Info</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-    <div class="newbiz_hover ">
-      <p class="newbiz-p">
-        <img src="http://placehold.it/500x330" class="img-responsive" alt="">
-      </p>
-      <div class="caption">
-        <div class="blur"></div>
-        <div class="caption-text">
-          <h3 class="newbiz-name">NEW BIZ NAME</h3>
-          <p class="newbiz-p">Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor...</p>
-          <a class="btn btn-default" href="biz.html"> More Info</a>
-        </div>
-      </div>
-    </div>        
-  </div>
-  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
-    <div class="newbiz_hover ">
-      <p class="newbiz-p">
-        <img src="http://placehold.it/500x330" class="img-responsive" alt="">
-      </p>
-      <div class="caption">
-        <div class="blur"></div>
-        <div class="caption-text">
-          <h3 class="newbiz-name">NEW BIZ NAME</h3>
-          <p class="newbiz-p">Loren ipsum dolor si amet ipsum dolor si amet ipsum dolor...</p>
+          <h3 class="newbiz-name">{{business.name}}</h3>
+          <p class="newbiz-p">{{business.street}}, {{business.city}}, {{business.province}}</p>
           <a class="btn btn-default" href="biz.html"> More Info</a>
         </div>
       </div>
