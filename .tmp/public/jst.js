@@ -54,7 +54,7 @@ this["JST"]["assets/templates/dashboard/profile.html"] = function(obj) {
 obj || (obj = {});
 var __t, __p = '', __e = _.escape;
 with (obj) {
-__p += 'This is Profile';
+__p += '<div class="container">\r\n  <div ng-repeat="review in reviewListbyUser.contents | orderBy: \'-dateCreated\'" class="panel-body" ng-init="showUserProfile(review.userid, $index)">\r\n              <div class="col-sm-2 col-lg-1">\r\n                <div class="user-image" id="userimg-{{$index}}"></div>\r\n              </div>\r\n              <div class="col-sm-10 col-lg-11 user-review">\r\n                <span class="date-rated">{{review.dateCreated | date:\'medium\' }}</span>\r\n                <span class="user-name alert-primary">\r\n                  <a href="#" id="username-{{$index}}"></a>\r\n                </span>\r\n                <span class="text-muted">Wrote a Review</span>\r\n                <div class="user-rating">\r\n                  <angular-ratings ng-model="review.rating"></angular-ratings>\r\n                </div>\r\n                <p>{{review.review}}</p>\r\n              </div>\r\n            </div>\r\n\r\n\r\n</div>';
 
 }
 return __p

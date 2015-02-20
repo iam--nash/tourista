@@ -58,6 +58,13 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
     contents: []
   };
 
+  $scope.reviewListbyUser = 
+  {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
+
   //Total Review - show-business.html
   $scope.totalReview = {
     loading: false,
@@ -458,6 +465,26 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
     });
     
   };
+
+  $scope.showReviewUser = function(id){
+    $scope.reviewListbyUser.loading = true;
+    $scope.reviewListbyUser.errorMsg = '';
+
+    io.socket.get('/reviews/business/user/'+ id, function onResponse(data, jwr){
+        if (jwr.error) {
+          $scope.reviewListbyUser.errorMsg = 'An unexpected error occurred: '+(data||jwr.status);
+          $scope.reviewListbyUser.loading = false;
+          return;
+        }
+        
+        $scope.reviewListbyUser.contents = data;
+        $scope.reviewListbyUser.loading = false;
+        $scope.$apply();
+
+        console.log("Show Review By User\n\n");
+        console.log(JSON.stringify(data,null,4));
+    });
+  }
 
   $scope.showBusinessProfile = function(id){
       $scope.businessProfile.loading = true;
