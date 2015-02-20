@@ -2,7 +2,19 @@
   font-family: glai;
   src: url(../fonts/source-sans-pro/sourcesanspro-semibold.woff);
 }
-/* Angular Rating CSS*/
+a:hover {
+  cursor: pointer;
+}
+header{
+  text-align: center;
+  padding: 25px 0;
+  background-color: rgb(26, 188, 156);
+  font-family: glai, Helvetica, Arial, sans-serif;
+}
+header .symbol {
+height: 90px;
+width: auto;
+}
 .angular-ratings {
   overflow: hidden;
   *zoom: 1;
@@ -24,21 +36,6 @@
 }
 .angular-ratings li.active {
   background-position: 0 -20px;
-}
-/* /Angular Ratings CSS*/
-
-header{
-  text-align: center;
-  padding: 25px 0;
-  background-color: rgb(26, 188, 156);
-  font-family: glai, Helvetica, Arial, sans-serif;
-}
-header .symbol {
-height: 90px;
-width: auto;
-}
-a {
-  cursor: pointer;
 }
 .nav-wrap ul{
   text-align: center;
@@ -69,27 +66,18 @@ margin-bottom: 0px !important;
 .nav-tabs>li.active>a{
   border: 0;
 }
-body > .ng-scope > div > div > .nav-tabs {
-  border-bottom: 0px;
-}
-.nav-tabs > li > a {
-  border:0;
-}
 .biz-indent{
   text-indent: 10px;
 }
-/* Google Map */
-#map_container{
-  position: relative;
+.modal-header{
+  background-color: #364347;
 }
-#map{
-    height: 0;
-    overflow: hidden;
-    padding-bottom: 22.25%;
-    padding-top: 30px;
-    position: relative;
+.modal-title{
+  color: #fff;
 }
-
+.button-close{
+  color: #fff;
+}
  /*Biz Reviews----------------------*/
 #stars{
   color: #F4E813;
@@ -101,9 +89,11 @@ body > .ng-scope > div > div > .nav-tabs {
 .reviews-number{
   padding-left: 5px;
 }
-.biz-image{
+.biz-image-wrap{
   margin-top: 10px;
-  padding-top: 10px;
+}
+.biz-map-wrap{
+  margin-top: 10px;
 }
 .panel-biznotif{
   background-color: #2C3E50;
@@ -136,6 +126,28 @@ body > .ng-scope > div > div > .nav-tabs {
 }
 .date-rated{
   float: right;
+}
+.modal-review .biz-name{
+  color: #fff;
+}
+.modal-body .btn-sucess{
+  color: #ffffff;
+  background-color: #3eb5ac;
+}
+.modal-body{
+  background-color: rgb(54, 67, 71);
+}
+.modal-body span{
+  color: #fff;
+  padding-right: 5px;
+}
+.modal-footer{
+  margin-top: 0px;
+  background-color: rgb(54, 67, 71);
+}
+.modal-footer .btn-sucess{
+  color: #ffffff;
+  background-color: #3eb5ac;
 }
 /*
 Recent Activity
@@ -211,11 +223,12 @@ Rotation and Text Slide
 .user-photobox{
   padding: 0px 0px 5px 0px;
 }
-.user-friends{
-  border-left: 1px solid;
-}
+
 .user-info{
   margin-left: 10px;
+}
+.user-info-details{
+  font-size: 16px;
 }
 .user-dashboard-reviews{
   margin-top: 17px;
@@ -236,8 +249,38 @@ Rotation and Text Slide
   padding: 8px 5px 1px 0px;
 }
 
+/*rating list*/
 
-
+.user-ratinglist{
+  margin-top: 17px;
+}
+.user-rating-head{
+  text-indent: 10px;
+  border-bottom: 1px solid;
+  padding-bottom: 10px;
+  border-color: rgb(214, 225, 229);
+  margin-bottom: 0px;
+}
+.business-image .img-responsive{
+  margin: 5px;
+}
+.rating-list .date-rated{
+  text-align: left;
+}
+.star-indent{
+  text-indent: 2px;
+}
+.panel-default >.panel-heading {
+  color: #FFFFFF;
+  background-color: #1ABC9C;
+}
+.rating-scale a{
+ color: rgb(44, 62, 80);
+}
+.viewfull-list a{
+  font-size: 14px;
+  color: rgb(44, 62, 80);
+}
 /*new biz in tourista*/
 
 .new-biz li{
@@ -248,10 +291,63 @@ Rotation and Text Slide
 .new-biz {
   display: inline-flex;
   padding-left: 5px;
-
 }
+.newbiz_hover{
+    padding: 0px;
+    position: relative;
+    overflow: hidden;
+    height: 200px;
+    background-color:#cccccc;
+  }
+  .newbiz_hover:hover .caption{
+    opacity: 1;
+    transform: translateY(-150px);
+    -webkit-transform:translateY(-150px);
+    -moz-transform:translateY(-150px);
+    -ms-transform:translateY(-150px);
+    -o-transform:translateY(-150px);
+  }
+  .newbiz_hover img{
+    z-index: 4;
+  }
+  .newbiz_hover .caption{
+    position: absolute;
+    top:150px;
+    -webkit-transition:all 0.3s ease-in-out;
+    -moz-transition:all 0.3s ease-in-out;
+    -o-transition:all 0.3s ease-in-out;
+    -ms-transition:all 0.3s ease-in-out;
+    transition:all 0.3s ease-in-out;
+    width: 100%;
+  }
+  .newbiz_hover .blur{
+    background-color: rgba(0,0,0,0.7);
+    height: 300px;
+    z-index: 5;
+    position: absolute;
+    width: 100%;
+  }
+  .newbiz_hover .caption-text{
+    z-index: 10;
+    color: #fff;
+    position: absolute;
+    height: 300px;
+    text-align: center;
+    top:-20px;
+    width: 100%;
+  }
+  .newbiz-p{
+    text-align:center; 
+    color: #fff;
+  }
+  .newbiz-name{
+    border-top: 2px solid rgb(26, 188, 156);
+    border-bottom: 2px solid rgb(52, 188, 152);
+    padding:10px;
+    color: #fff;
+  }
 
-/*end signup*/
+
 
 /*footer----------------*/
 .tourista-footer{
@@ -269,21 +365,9 @@ Rotation and Text Slide
   text-align: center;
   background-color: #CCCCCC;
 }
-.container-fluid .col-lg-8 > div > div:not(:last-child) {
-  border-bottom: 1px solid #d6e1e5;
-}
-@media screen and (max-width: 767px){
-  .jumbotron {
-    padding:  10px 10px;
-  }
-  .jumbotron-default .col-xs-12 > p {
-    font-size:  14px;
-    text-align:   center;
-  }
 
+.ng-scope .col-lg-8 > div > div:not(:last-child){
+  border-bottom: 1px solid #d6e1e5;
+;
 }
-@media screen and (max-width:   992px){
-  .jumbotron-default .pull-right > h2 {
-    margin:   24px 0px 10px;
-  }
-}
+

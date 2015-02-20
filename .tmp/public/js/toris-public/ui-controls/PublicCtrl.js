@@ -38,6 +38,12 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     errorMsg: '',
     contents: []
   };
+  $scope.reviewListbyBusiness = 
+  {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
 
   //Total Review - show-business.html
   $scope.totalReview = {
@@ -259,7 +265,7 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
   $scope.showReviewBusiness = function(id){
 
     io.socket.get('/reviews/business/'+ id, function onResponse(data, jwr){
-        $scope.reviewList.contents = data;
+        $scope.reviewListbyBusiness.contents = data;
         $scope.$apply();
 
         console.log("Show Review By Business\n\n");

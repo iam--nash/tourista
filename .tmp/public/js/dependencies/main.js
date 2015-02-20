@@ -124,12 +124,14 @@ $( document ).ready(function() {
 
 $(document).ready( function(){
 
-    console.log("Sorry wala ako nagawa.");
-
-   
-
     //Slide Toggle Button
     $('.navbar-toggle').on('click', function(){
         $('.collapse.navbar-collapse').slideToggle();
     });
+    $('.biz-type').on('change', function(){
+        var $business = $(this).val();
+        console.log($business);
+        $('.business').removeClass('active');
+        $('.business.' + $business).addClass('active');
+    }); //end of click radio button
 });

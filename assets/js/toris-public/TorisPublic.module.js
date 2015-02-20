@@ -50,7 +50,10 @@ angular.module('TorisPublic')
   .when('/', {
     templateUrl: 'templates/public/home.html',
     controller: ['$scope', '$location', function($scope, $location, $routeParams) {
-        $scope.showAllBusiness();
+      $scope.showUserProfile("54e649d408f9cd5c168ac9d8");
+    
+      $scope.showAllBusiness();
+      $scope.showAllReviews();
     }]
   })
 
@@ -86,11 +89,11 @@ angular.module('TorisPublic')
   .when('/business/:id', {
     templateUrl: 'templates/public/show-business.html',
     controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
-      $scope.showBusinessProfile($routeParams.id);
-      
-      $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
-      $scope.getTotalReview("54e36a84e4b0e69a3d1e9f0b");
-      $scope.getAverageRating("54e36a84e4b0e69a3d1e9f0b");
+      $scope.showBusinessProfile($routeParams.id);  
+      $scope.showReviewBusiness($routeParams.id);
+      $scope.getTotalReview($routeParams.id);
+      $scope.getAverageRating($routeParams.id);
+
       $scope.showUserProfile("54e649d408f9cd5c168ac9d8");
     }]
   })
