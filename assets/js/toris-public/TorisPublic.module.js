@@ -92,7 +92,6 @@ angular.module('TorisPublic')
       $scope.getTotalReview($routeParams.id);
       $scope.getAverageRating($routeParams.id);
 
-      
     }]
   })
 

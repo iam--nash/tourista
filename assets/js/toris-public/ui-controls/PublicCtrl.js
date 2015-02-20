@@ -139,7 +139,7 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
   };
 
   $scope.showUserProfile = function(id, index){
-
+      /*
       io.socket.get('/users/'+ id, function onResponse(data, jwr){
         if (jwr.error) {
           return;
@@ -149,7 +149,8 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
         
         console.log("Show Single User By Id\n\n");
         console.log(JSON.stringify(data.name,null));
-      });
+      });*/
+ 
   };
 
   $scope.submitReviewForm = function(){
