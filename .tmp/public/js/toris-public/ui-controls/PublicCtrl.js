@@ -139,25 +139,15 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
   };
 
   $scope.showUserProfile = function(id, index){
-      /*
+      console.log(index);
       io.socket.get('/users/'+ id, function onResponse(data, jwr){
         if (jwr.error) {
           return;
-        }
-        console.log(index);        
-        $("#username-"+ index).append(data.name);
+        }     
         
-        console.log("Show Single User By Id\n\n");
-        console.log(JSON.stringify(data.name,null));
-      });*/
-
-      $http.get('/users/'+ id).
-        success(function(data) {
-          console.log(data.name);
-        }).
-        error(function(data) {
-          
-        });
+        $("#username-"+index).append(data.name);
+        $("#userimg-"+index).append("<img class='img-thumbnail' src='"+ data.gravatarUrl +"' />");
+      });
   };
 
   $scope.submitReviewForm = function(){
@@ -224,6 +214,17 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
         console.log("Show Single Business By Id\n\n");
         console.log(JSON.stringify(data,null,4));
       });
+  };
+
+  $scope.appendBusinessName = function(id,index){
+      io.socket.get('/businesses/'+ id, function onResponse(data, jwr){
+        if (jwr.error) {
+          return;
+        }     
+        
+        $("#businessname-"+index).append(data.name);
+      });
+  
   };
 
   $scope.showBusinessCity = function(city){

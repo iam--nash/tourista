@@ -1,4 +1,4 @@
-angular.module('TorisDashboard', ['ngRoute', 'toastr']);
+angular.module('TorisDashboard', ['ngRoute', 'toastr', 'uiGmapgoogle-maps', 'ratings']);
 
 angular.module('TorisDashboard')
 .config(function(toastrConfig) {
@@ -54,6 +54,7 @@ angular.module('TorisDashboard')
     templateUrl: 'templates/dashboard/home.html',
     controller: ['$scope', '$location', function($scope, $location) {
       $scope.showAllBusiness();
+      $scope.showAllReviews();
     }]
   })
 
@@ -230,10 +231,11 @@ angular.module('TorisDashboard')
     controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
       $scope.showBusinessProfile($routeParams.id);   
 
+      $scope.showBusinessProfile($routeParams.id);  
       $scope.showReviewBusiness($routeParams.id);
       $scope.getTotalReview($routeParams.id);
       $scope.getAverageRating($routeParams.id);
-      $scope.showUserProfile("54e649d408f9cd5c168ac9d8");
+
     }]
   })
 

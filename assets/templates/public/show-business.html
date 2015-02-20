@@ -58,17 +58,15 @@
               <br><br><br><br><br><br><br>
             </div>
 
-            <div ng-repeat="review in reviewListbyBusiness.contents | orderBy: '-dateCreated'" class="panel-body">
+            <div ng-repeat="review in reviewListbyBusiness.contents | orderBy: '-dateCreated'" class="panel-body" ng-init="showUserProfile(review.userid, $index)">
               <div class="col-sm-2 col-lg-1">
-                <div class="user-image"> 
-                  <img class="img-thumbnail" ng-src="/images/user.jpg">
-                </div>
+                <div class="user-image" id="userimg-{{$index}}"></div>
               </div>
               <div class="col-sm-10 col-lg-11 user-review">
                 <span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
-                <!-- <span class="user-name alert-primary" id="username-{{$index}}">
-                  <a href="#">{{showUserProfile(review.userid, $index)}}</a>
-                </span>&nbsp; -->|
+                <span class="user-name alert-primary">
+                  <a href="#" id="username-{{$index}}"></a>
+                </span>
                 <span class="text-muted">Wrote a Review</span>
                 <div class="user-rating">
                   <angular-ratings ng-model="review.rating"></angular-ratings>
