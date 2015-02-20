@@ -2,6 +2,30 @@
   font-family: glai;
   src: url(../fonts/source-sans-pro/sourcesanspro-semibold.woff);
 }
+/* Angular Rating CSS*/
+.angular-ratings {
+  overflow: hidden;
+  *zoom: 1;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.angular-ratings li {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin: 1px;
+  text-indent: -500000em;
+  background: url(angular-star.png)
+  no-repeat; background-size: 100%;
+}
+.angular-ratings li.over {
+  border-color: silver; background-color: white; background-position: 0 -20px; cursor: pointer;
+}
+.angular-ratings li.active {
+  background-position: 0 -20px;
+}
+/* /Angular Ratings CSS*/
 
 header{
   text-align: center;
@@ -12,6 +36,9 @@ header{
 header .symbol {
 height: 90px;
 width: auto;
+}
+a {
+  cursor: pointer;
 }
 .nav-wrap ul{
   text-align: center;

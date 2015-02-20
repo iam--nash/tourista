@@ -9,7 +9,7 @@
  * ```
  */
 
-angular.module('TorisPublic', ['ngRoute', 'toastr', 'compareTo']);
+angular.module('TorisPublic', ['ngRoute', 'toastr', 'compareTo', 'ratings']);
 
 
 angular.module('TorisPublic')
@@ -49,9 +49,8 @@ angular.module('TorisPublic')
   $routeProvider
   .when('/', {
     templateUrl: 'templates/public/home.html',
-    controller: ['$scope', '$location', function($scope, $location) {
+    controller: ['$scope', '$location', function($scope, $location, $routeParams) {
         $scope.showAllBusiness();
-        $scope.showReviewBusiness("54e36a84e4b0e69a3d1e9f0b");
     }]
   })
 

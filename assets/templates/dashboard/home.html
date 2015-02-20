@@ -1,3 +1,22 @@
+<div class="jumbotron jumbotron-default">
+	<div class="jumbotron-border">
+		<div class="container">
+			<div class="row">
+			<div class="col-xs-1 icon-samples">
+				<h2><img class="img-responsive" src="/images/map.svg"></h2>
+			</div>
+				<div class="col-xs-10 pull-left">
+				<h2>Tourista 1.0  is the best way to find great local businesses</h2>
+				</div>
+				<div class="col-xs-12">
+				<p>
+				People use Tourista 1.0 to search for everything from the city's tastiest burger to the most renowned cardiologist. What will you uncover in your neighborhood?
+				</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <!-- Categories of Tourist Destination Widget -->
 <div class="container-fluid">
@@ -10,7 +29,6 @@
 		      {{businessList.errorMsg}}
 		    </code>
 	  	</div>
-
 
 	    <!-- Nav tabs -->
 	    <ul class="nav nav-tabs" role="tablist">
@@ -52,6 +70,7 @@
 								<h4 class="business-name">{{business.name}}</h4>
 							</a>
 							<p class="review-text">{{business.street}}, {{business.city}}, {{business.province}}</p>
+							<p class="description">{{business.description}}</p>
 						</div>
 					</div>
 				</div>
@@ -69,7 +88,7 @@
 		<div class="row">
 
 			<div class="col-sm-8">
-				<div ng-repeat="review in reviewList.contents | orderBy:'-dateCreated' | limitTo:3" class="panel panel-default">
+				<div ng-repeat="review in reviewList.contents | orderBy:'-dateCreated' | limitTo:10" class="panel panel-default">
 					<div class="panel-body">
 						<div class="col-lg-2">
 							<div class="user-image">
@@ -81,11 +100,7 @@
 						</span> <!-- |
 						<span class="user-location"> <a href="#">{location}</a></span> -->
 						<div class="user-rating">
-							<span id="stars" class="fa fa-star"></span>
-							<span id="stars" class="fa fa-star"></span>
-							<span id="stars" class="fa fa-star"></span>
-							<span id="stars" class="fa fa-star"></span>
-							<span id="stars" class="fa fa-star"></span>
+							{{review.AveRating}}
 
 							<span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
 						</div>

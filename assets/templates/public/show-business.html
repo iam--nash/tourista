@@ -14,14 +14,15 @@
     <span>Loading business data...</span>
   </div>
 
+
 </div>
-  <div class="container">
-    <h2 ng-hide="businessProfile.loading" class="biz-name biz-indent">{{businessProfile.contents.name}}</h2>
-    <p>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}}, Total Reviews : {{businessProfile.contents.totalReview}} </p>
+  <div ng-hide="businessProfile.loading" class="container">
+    <h2 class="biz-name biz-indent">{{businessProfile.contents.name}}</h2>
+    <p>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}} </p>
     <div class="row">
       <div class="biz-image">
         <div class="text-center">
-          <img class="img-responsive text-center col-xs-12" ng-src="{{businessProfile.contents.photos[1]}}" style="display:inline; max-height:400px">
+          <img class="img-responsive text-center col-xs-12" ng-src="{{businessProfile.contents.photos[0]}}" style="display:inline; max-height:400px">
         </div>
       </div>
     </div>
@@ -38,7 +39,7 @@
       <div class="biz-reviews">
         <div class="col-lg-8">
           <div class="panel panel-default">
-            <div ng-show="businessProfile.contents.review === 0">
+            <div ng-show="review.reviewList.contents === 0">
               <span>No review yet.</span>
               <br><br><br><br><br><br><br>
             </div>
@@ -51,11 +52,9 @@
               <span class="user-name"><a href="#"> User </a> </span><!--  |
               <span class="user-location"> <a href="#">Sampernandu </a></span> -->
               <div class="user-rating">
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
+                <div class="span3">
+                  <angular-ratings ng-model="review.Rating"></angular-ratings>
+                </div>
                 <span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
               </div>
               <div class="col-lg-9 user-review">

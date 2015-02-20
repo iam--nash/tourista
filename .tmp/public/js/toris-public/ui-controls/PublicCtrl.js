@@ -45,6 +45,11 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     errorMsg: '',
     contents: []
   };
+  $scope.AveRating = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
 
 
 
@@ -197,9 +202,10 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
   };
 
   $scope.showBusinessCategory = function(category){
-    if(category === ""){
-      category = "Restaurant"
-    }
+    if(category === "")
+      {
+        category = "Restaurant"
+      }
     io.socket.get('/businesses/category/'+ category, function onResponse(data, jwr){
         $scope.businessList.contents = data;
         $scope.$apply();
@@ -214,6 +220,7 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     io.socket.get('/reviews/business/'+ id, function onResponse(data, jwr){
         $scope.reviewList.contents = data;
         $scope.$apply();
+
         console.log("Show Review By Business\n\n");
         console.log(JSON.stringify(data,null,4));
     });
@@ -233,6 +240,9 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
 
   $scope.getAverageRating = function(id){
     io.socket.get('/reviews/business/rating/'+ id, function onResponse(data, jwr){
+        $scope.AveRating.contents = data;
+        $scope.$apply();
+
         console.log("Show Business Average Rating\n\n");
         console.log(JSON.stringify(data,null,4));
     });

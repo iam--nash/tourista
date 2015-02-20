@@ -22,6 +22,7 @@ module.exports = {
 	          businessid: review.businessId,
 	          userid: review.userId,
 	          review: review.review,
+	          rating: review.rating,
 	          dateCreated: review.createdAt
 	        });
 	      });
