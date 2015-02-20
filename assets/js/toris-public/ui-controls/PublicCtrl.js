@@ -138,11 +138,12 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
           
           return;
         }
+
         $scope.userInfo.contents = data;
         $scope.$apply();
 
         console.log("Show Single User By Id\n\n");
-        console.log(JSON.stringify(data,null,4));
+        console.log(JSON.stringify(data.name,null,4));
       });
   };
 
