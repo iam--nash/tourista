@@ -26,6 +26,10 @@
             <input type="hidden" name="_csrf" value="<%= _csrf %>" />
 		</div>
     </form>
+    
+    <div ng-repeat="review in reviewList.contents">
+        {{review.userid}}
+    </div>
 <!--
     <button ng-click="showBusinessCategory('Restaurant')">Restaurant</button>
     <button ng-click="showBusinessCategory('Travel')">Travel</button>

@@ -229,6 +229,11 @@ angular.module('TorisDashboard')
     templateUrl: 'templates/public/show-business.html',
     controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
       $scope.showBusinessProfile($routeParams.id);   
+
+      $scope.showReviewBusiness($routeParams.id);
+      $scope.getTotalReview($routeParams.id);
+      $scope.getAverageRating($routeParams.id);
+      $scope.showUserProfile("54e649d408f9cd5c168ac9d8");
     }]
   })
 

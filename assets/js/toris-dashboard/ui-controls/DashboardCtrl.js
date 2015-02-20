@@ -29,12 +29,7 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
     properties: {}
   };
 
-
-  $scope.reviewList = {
-    loading: false,
-    errorMsg: '',
-    contents: []
-  };
+  $scope.selectedCategory = "";
 
   $scope.businessProfile = {
     loading: false,
@@ -49,9 +44,32 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
     loading: false
   };
 
+  //Review List - show-business.html
+  $scope.reviewList = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
+
+  //Total Review - show-business.html
+  $scope.totalReview = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
+  $scope.AveRating = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
+  $scope.userInfo = {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
+
 
   $scope.me = window.SAILS_LOCALS.me;
-
 
 
   io.socket.put('/me/online', {
@@ -314,7 +332,45 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
     });
   };
 
+
   //=============================================================================================
+  $scope.showUserProfile = function(id){
+      io.socket.get('/users/'+ id, function onResponse(data, jwr){
+        if (jwr.error) {
+          
+          return;
+        }
+        $scope.userInfo.contents = data;
+        $scope.$apply();
+
+        //return data.name;
+
+        console.log("Show Single User By Id\n\n");
+        console.log(JSON.stringify(data.name,null,4));
+      });
+  };
+
+  $scope.getTotalReview = function(id){
+
+    io.socket.get('/reviews/business/count/'+ id, function onResponse(data, jwr){
+        $scope.totalReview.contents = data;
+        $scope.$apply();
+
+        console.log("Show Business Review Count\n\n");
+        console.log(JSON.stringify(data,null,4));
+    });
+  }
+
+  $scope.getAverageRating = function(id){
+    io.socket.get('/reviews/business/rating/'+ id, function onResponse(data, jwr){
+        $scope.AveRating.contents = data;
+        $scope.$apply();
+
+        console.log("Show Business Average Rating\n\n");
+        console.log(JSON.stringify(data,null,4));
+    });
+  }
+
   $scope.showBusinessCategory = function(category){
     if(category === ""){
       category = "Restaurant"
@@ -344,6 +400,26 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
         $scope.$apply();
 
         console.log("Show ALL Business\n\n");
+        console.log(JSON.stringify(data,null,4));
+      });
+  };
+
+  $scope.showAllReviews = function (){
+      $scope.reviewList.loading = true;
+      $scope.reviewList.errorMsg = '';
+      
+      io.socket.get('/reviews', function (data, jwr) {
+        if (jwr.error) {
+          $scope.reviewList.errorMsg = 'An unexpected error occurred: '+(data||jwr.status);
+          $scope.reviewList.loading = false;
+          return;
+        }
+        $scope.reviewList.contents = data;
+        $scope.reviewList.loading = false;
+        
+        $scope.$apply();
+
+        console.log("Show ALL Reviews\n\n");
         console.log(JSON.stringify(data,null,4));
       });
   };
