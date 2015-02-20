@@ -126,6 +126,19 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     });
   };
 
+  $scope.showUserProfile = function(id){
+
+      io.socket.get('/users/'+ id, function onResponse(data, jwr){
+        if (jwr.error) {
+          
+          return;
+        }
+
+        console.log("Show Single User By Id\n\n");
+        console.log(JSON.stringify(data,null,4));
+      });
+  };
+
   $scope.submitReviewForm = function(){
     
     $http.post('/reviews/new', {
@@ -244,7 +257,6 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
         console.log("Show Review By Business\n\n");
         console.log(JSON.stringify(data,null,4));
     });
-
   };
 
   $scope.getTotalReview = function(id){

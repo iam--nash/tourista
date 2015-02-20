@@ -105,6 +105,9 @@ angular.module('TorisPublic')
   .when('/documentation', {
     templateUrl: 'templates/public/documentation.html',
     controller: ['$scope', '$location', '$routeParams', '$http', function($scope, $location, $routeParams, $http) {
+      
+      $scope.showUserProfile("54e649d408f9cd5c168ac9d8");
+      
       $scope.showAllBusiness();
       $scope.showBusinessProfile("54e36513e4b0e69a3d1e9eb5");
       $scope.showBusinessCity("Magalang");
