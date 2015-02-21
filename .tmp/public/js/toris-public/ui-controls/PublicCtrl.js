@@ -23,7 +23,7 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     contents: []
   };
 
-  $scope.selectedCategory = "";
+  $scope.selectedCategory = '';
 
   //Business Profile - show-business.html
   $scope.businessProfile = {
@@ -51,11 +51,13 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     errorMsg: '',
     contents: []
   };
+
   $scope.AveRating = {
     loading: false,
     errorMsg: '',
     contents: []
   };
+
   $scope.userInfo = {
     loading: false,
     errorMsg: '',

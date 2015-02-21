@@ -9,8 +9,7 @@
  * ```
  */
 
-angular.module('TorisPublic', ['ngRoute', 'toastr', 'compareTo', 'ratings']);
-
+angular.module('TorisPublic', ['ngRoute', 'google-maps', 'toastr', 'compareTo', 'ratings']);
 
 angular.module('TorisPublic')
 .config(function (toastrConfig) {

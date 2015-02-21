@@ -26,10 +26,21 @@
             <input type="hidden" name="_csrf" value="<%= _csrf %>" />
 		</div>
     </form>
-    
-    <div ng-repeat="review in reviewList.contents">
-        {{review.userid}}
-    </div>
+    <br/><br/><br/><br/>
+ 
+    <!-- enctype="multipart/form-data" -->
+<!--   
+    <form ng-submit="uploadFileForm()">
+            <input type="file" ng-model="uploadForm.file" name="uploadFile" />
+            <button class="btn btn-primary btn-lg btn-block" type="submit">
+                <span>Upload File</span>
+            </button>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+    </form>
+
+-->
+
+
 <!--
     <button ng-click="showBusinessCategory('Restaurant')">Restaurant</button>
     <button ng-click="showBusinessCategory('Travel')">Travel</button>
