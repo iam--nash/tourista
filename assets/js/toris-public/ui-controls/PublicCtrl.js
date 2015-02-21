@@ -143,11 +143,10 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
           return;
         }
         console.log(index);        
-        $("#username-" + index).append(data.name);
-
+        $("#username-"+ index).append(data.name);
         
         console.log("Show Single User By Id\n\n");
-        console.log(JSON.stringify(data.name,null,4));
+        console.log(JSON.stringify(data.name,null));
       });
   };
 

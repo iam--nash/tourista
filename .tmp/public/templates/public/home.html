@@ -51,7 +51,7 @@
 				<a ng-click="showBusinessCategory('Hotels')">Hotels</a>
 			</li>
 	    </ul>
-	    <!-- All touris destination-->
+	    <!-- All tourist destination-->
 		<div class="tab-content">
 			<div role="tabpanel" class="tab-pane fade in active" id="all">
 				<!---Start of Panel -->
@@ -65,7 +65,7 @@
 				    	<br><br><br><br><br><br><br>
 				  	</div>
 			  	</div>
-				<div ng-repeat="business in businessList.contents | orderBy:'name' | limitTo:'12'"class="col-md-3 col-sm-4">
+				<div ng-repeat="business in businessList.contents | orderBy:'name' | limitTo:'12'"class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 					<div class="thumbnail thumbnail-caption">
 						<img ng-src="{{business.photos[0]}}" class="img-responsive" alt="Business Image">
 						<div class="caption">
@@ -73,7 +73,9 @@
 								<h4 class="business-name">{{business.name}}</h4>
 							</a>
 							<p class="review-text">{{business.street}}, {{business.city}}, {{business.province}}</p>
-							<p class="description">{{business.description}}</p>
+							<div id="description">
+								{{business.description}}
+							</div>
 						</div>
 					</div>
 				</div>
@@ -153,7 +155,7 @@
 <div class="container-fluid" >
 <h3 class="title-heading"> New Business in Tourista 1.0</h3>
 <div class="row">
-  <div ng-repeat="business in businessList.contents | limitTo:'4' | orderBy:'-dateCreated'" class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+  <div ng-repeat="business in businessList.contents | limitTo:'4' | orderBy:'-dateCreated'" class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
     <div class="newbiz_hover">
       <p class="newbiz-p">
         <img ng-src="{{business.photos[0]}}" alt="">
@@ -163,7 +165,7 @@
         <div class="caption-text">
           <h3 class="newbiz-name">{{business.name}}</h3>
           <p class="newbiz-p">{{business.street}}, {{business.city}}, {{business.province}}</p>
-          <a class="btn btn-default" href="biz.html"> More Info</a>
+          <a class="btn btn-default" ng-href="#/business/{{business.id}}"> More Info</a>
         </div>
       </div>
     </div>
