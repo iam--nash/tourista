@@ -21,6 +21,7 @@
     <h2 class="biz-name">{{businessProfile.contents.name}} </h2>
     <span>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}} </span>
     <angular-ratings ng-model="AveRating.contents.averagerate"></angular-ratings>
+    Average Rating : {{AveRating.contents.averagerate}}
     </div>
     <div class="row">
       <div class="biz-image col-xs-8">
@@ -34,45 +35,46 @@
             <h3 class="panel-title "> Business Map </h3>
           </div>
           <div class="" align="center">
-            <img src="http://placehold.it/408x182">
+            <ui-gmap-google-map center="businessProfile.contents.center" zoom='8'>
+                <ui-gmap-marker coords="businessProfile.contents.marker" idkey="0"></ui-gmap-marker>
+            </ui-gmap-google-map>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <div class="container-fluid">
     <div class="row">
       <!-- Recent Reviews -->
       <div class="biz-reviews">
         <div class="col-lg-8">
-          <h3 class="">Reviews
+          <h3 class="">{{businessProfile.contents.name}} Reviews
             <span class="pull-right">({{totalReview.contents.numCount}})</span>
           </h3>
           <div class="panel panel-default">
-            <div ng-show="review.reviewListbyBusiness.contents === 0">
+            <div ng-show="totalReview.contents.numCount === 0">
               <span>No review yet.</span>
               <br><br><br><br><br><br><br>
             </div>
-            <div ng-repeat="review in reviewListbyBusiness.contents | orderBy: '-dateCreated'" class="panel-body">
+
+            <div ng-repeat="review in reviewListbyBusiness.contents | orderBy: '-dateCreated'" class="panel-body" ng-init="showUserProfile(review.userid, $index)">
               <div class="col-sm-2 col-lg-1">
-                <div class="user-image"> 
-                  
-                </div>
+                <div class="user-image" id="userimg-{{$index}}"></div>
               </div>
               <div class="col-sm-10 col-lg-11 user-review">
                 <span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
                 <span class="user-name alert-primary">
-                  <a href="#">{{userInfo.contents.name}}</a>
-                  
-                </span>&nbsp;|
-                <span class="alert-danger">{{userInfo.contents.title}}</span>
+                  <a href="#" id="username-{{$index}}"></a>
+                </span>
+                <span class="text-muted">Wrote a Review</span>
                 <div class="user-rating">
                   <angular-ratings ng-model="review.rating"></angular-ratings>
                 </div>
                 <p>{{review.review}}</p>
-                {{review.id}}
               </div>
             </div>
+
           </div>
         </div>
         <!-- Events -->

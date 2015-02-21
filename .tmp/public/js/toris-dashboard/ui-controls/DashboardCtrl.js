@@ -51,6 +51,13 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
     contents: []
   };
 
+  $scope.reviewListbyBusiness = 
+  {
+    loading: false,
+    errorMsg: '',
+    contents: []
+  };
+
   //Total Review - show-business.html
   $scope.totalReview = {
     loading: false,
@@ -334,19 +341,15 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
 
 
   //=============================================================================================
-  $scope.showUserProfile = function(id){
+  $scope.showUserProfile = function(id, index){
+      console.log(index);
       io.socket.get('/users/'+ id, function onResponse(data, jwr){
         if (jwr.error) {
-          
           return;
-        }
-        $scope.userInfo.contents = data;
-        $scope.$apply();
-
-        //return data.name;
-
-        console.log("Show Single User By Id\n\n");
-        console.log(JSON.stringify(data.name,null,4));
+        }     
+        
+        $("#username-"+index).append(data.name);
+        $("#userimg-"+index).append("<img class='img-thumbnail' src='"+ data.gravatarUrl +"' />");
       });
   };
 
@@ -404,6 +407,17 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
       });
   };
 
+   $scope.appendBusinessName = function(id,index){
+      io.socket.get('/businesses/'+ id, function onResponse(data, jwr){
+        if (jwr.error) {
+          return;
+        }     
+        
+        $("#businessname-"+index).append(data.name);
+      });
+  
+  };
+
   $scope.showAllReviews = function (){
       $scope.reviewList.loading = true;
       $scope.reviewList.errorMsg = '';
@@ -425,14 +439,24 @@ angular.module('TorisDashboard').controller('DashboardCtrl', ['$scope', '$http',
   };
 
   $scope.showReviewBusiness = function(id){
+    $scope.reviewListbyBusiness.loading = true;
+    $scope.reviewListbyBusiness.errorMsg = '';
 
     io.socket.get('/reviews/business/'+ id, function onResponse(data, jwr){
-        $scope.reviewList.contents = data;
+        if (jwr.error) {
+          $scope.reviewListbyBusiness.errorMsg = 'An unexpected error occurred: '+(data||jwr.status);
+          $scope.reviewListbyBusiness.loading = false;
+          return;
+        }
+        
+        $scope.reviewListbyBusiness.contents = data;
+        $scope.reviewListbyBusiness.loading = false;
         $scope.$apply();
+
         console.log("Show Review By Business\n\n");
         console.log(JSON.stringify(data,null,4));
     });
-
+    
   };
 
   $scope.showBusinessProfile = function(id){
