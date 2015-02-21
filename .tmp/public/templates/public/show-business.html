@@ -18,40 +18,32 @@
 </div>
   <div ng-hide="businessProfile.loading" class="container-fluid">
     <div class="col-xs-12">
-    <h2 class="biz-name">{{businessProfile.contents.name}} </h2>
-    <span>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}} </span>
-    <angular-ratings ng-model="AveRating.contents.averagerate"></angular-ratings>
-    Average Rating : {{AveRating.contents.averagerate}}
+      <h2 class="biz-name">{{businessProfile.contents.name}} /</h2>
+      <span>{{businessProfile.contents.street}}, {{businessProfile.contents.city}}, {{businessProfile.contents.province}} </span>
+      <p>Average Rating : {{AveRating.contents.averagerate}}<angular-ratings ng-model="AveRating.contents.averagerate"></angular-ratings></p>
+    <p>{{businessProfile.contents.description}}</p>
     </div>
     <div class="row">
-      <div class="biz-image col-xs-8">
+      <div class="biz-image col-xs-12 col-sm-7 col-md-8">
         <div class="text-center">
           <img class="img-responsive text-center col-xs-12" ng-src="{{businessProfile.contents.photos[0]}}" style="display:inline; max-height:400px">
         </div>
       </div>
-      <div class="biz-image col-xs-4">
+      <div class="biz-image col-xs-12 col-sm-5 col-md-4">
         <div class="panel panel-default panel-event">
           <div class="panel-heading event-heading">
             <h3 class="panel-title "> Business Map </h3>
           </div>
-<<<<<<< HEAD
           <div class="">
-            <google-map center="{lat: 15.133078, lng: 120.590011}" zoom="16">
-              <info-window position="{lat: 15.133078, lng: 120.590011}" visible="true">
-                <span>Location</span>
-              </info-window>
-            </google-map>
-=======
-          <div class="" align="center">
-            <ui-gmap-google-map center="businessProfile.contents.center" zoom='8'>
-                <ui-gmap-marker coords="businessProfile.contents.marker" idkey="0"></ui-gmap-marker>
-            </ui-gmap-google-map>
->>>>>>> d8ac19c85338ffb92b21d5ce59dc69b146624c73
+            <div class="" align="center">
+              <ui-gmap-google-map center="businessProfile.contents.center" zoom='8'>
+                  <ui-gmap-marker coords="businessProfile.contents.marker" idkey="0"></ui-gmap-marker>
+              </ui-gmap-google-map>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
   <div class="container-fluid">
     <div class="row">

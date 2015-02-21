@@ -366,6 +366,9 @@ Rotation and Text Slide
 
 
 /*footer----------------*/
+.panel-footer {
+  padding: 0px;
+}
 .tourista-footer{
   background-color:rgb(26, 188, 156);
   color: #fff;
