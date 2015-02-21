@@ -1,66 +1,38 @@
-<<<<<<< HEAD
-  <div class="container-fluid">
-    <div class="row">
-        <h3 class="user-name">{{me.name}}</h2>
-       <div ></div> 
-      <div class="userinfo-main col-lg-2">
-        <div class="user-photo">
-          <div class="user-photobox">
-            <img class="img-responsive img-thumbnail" ng-src="{{me.gravatarUrl}}">
-          </div>
-        </div>
-        <div class="user-info">
-          <span class="user-info-details"><strong>Title</strong></span>
-          <p class="user-info-details">{{me.title}}</p>
-<!--           <span class="user-info-details"><strong>Tourista since</strong></span>
-          <p class="user-info-details">{{me.dateCreated}}</p> -->
-        </div>
-      </div>
-      <div class="col-lg-7">
-        <div class="panel panel-default user-dashboard-reviews">
-            <div class="panel-body" ng-repeat="me.review in me.reviewList.contents | orderBy:'-dateCreated'">
-              <div class="col-lg-2">
-                <div class="user-image">
-                  <img class="img-thumbnail" src="http://placehold.it/80x80">
-                </div>
-              </div>
-              <span class="user-name"><a href="biz.html"> {{review.contents.name}} </a> </span>
-              <div class="user-rating">
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
-                <span class="date-rated">{{review.contents.dateCreated}}</span>
-              </div>
-              <div class="col-lg-9 user-review">
-                <p>{{review.contents.review}}</p>
-              </div>
-            </div>
-          </div>
-      </div>
 
+<div class="container-fluid">
+  <div class="row">
+    <h3 class="user-name">{{me.name}}</h3>
+    <div class="userinfo-main col-lg-1">
+      <div class="user-photo">
+        <div class="user-photobox">
+          <img class="img-responsive img-thumbnail" ng-src="{{me.gravatarUrl}}">
+        </div>
+      </div>
+      <div class="user-info">
+        <span class="user-info-details"><strong>Title</strong></span>
+        <p class="user-info-details">{{me.title}}</p>
+      </div>
+    </div>
+    <div class="col-lg-11">
+      <div class="panel panel-default user-dashboard-reviews">
+        <div ng-repeat="review in reviewListbyUser.contents | orderBy: '-dateCreated'" class="panel-body" ng-init="showUserProfile(review.userid, $index)">
+          <div class="col-sm-2 col-lg-1">
+            <div class="user-image" id="userimg-{{$index}}"></div>
+          </div>
+          <div class="col-sm-10 col-lg-11 user-review">
+            <span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
+            <span class="user-name alert-primary">
+              <a href="#" id="username-{{$index}}"></a>
+            </span>&nbsp;|&nbsp;
+            <span class="text-muted">Wrote a Review to <a href="#">{{review.contents.name}}</a></span>
+            <div class="user-rating">
+              <angular-ratings ng-model="review.rating"></angular-ratings>
+            </div>
+            <p>{{review.review}}</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-=======
-<div class="container">
-  <div ng-repeat="review in reviewListbyUser.contents | orderBy: '-dateCreated'" class="panel-body" ng-init="showUserProfile(review.userid, $index)">
-              <div class="col-sm-2 col-lg-1">
-                <div class="user-image" id="userimg-{{$index}}"></div>
-              </div>
-              <div class="col-sm-10 col-lg-11 user-review">
-                <span class="date-rated">{{review.dateCreated | date:'medium' }}</span>
-                <span class="user-name alert-primary">
-                  <a href="#" id="username-{{$index}}"></a>
-                </span>
-                <span class="text-muted">Wrote a Review</span>
-                <div class="user-rating">
-                  <angular-ratings ng-model="review.rating"></angular-ratings>
-                </div>
-                <p>{{review.review}}</p>
-              </div>
-            </div>
-
-
 </div>
->>>>>>> 6a3369498214652d6d26834b09061674224a831c
+
