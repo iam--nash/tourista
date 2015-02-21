@@ -5,81 +5,39 @@
       <div class="userinfo-main col-lg-2">
         <div class="user-photo">
           <div class="user-photobox">
-            <img class="img-responsive img-thumbnail" src="http://placehold.it/110x110">
+            <img class="img-responsive img-thumbnail" ng-src="{{me.gravatarUrl}}">
           </div>
         </div>
         <div class="user-info">
-          <span class="user-info-details"><strong>Age</strong></span>
-          <p class="user-info-details">16 yrs old</p>
-          <span class="user-info-details"><strong>Location</strong></span>
-          <p class="user-info-details"> San Fernando Pampanga</p>
-          <span class="user-info-details"><strong>Tourista since</strong></span>
-          <p class="user-info-details"> January 2015 </p>
+          <span class="user-info-details"><strong>Title</strong></span>
+          <p class="user-info-details">{{me.title}}</p>
+<!--           <span class="user-info-details"><strong>Tourista since</strong></span>
+          <p class="user-info-details">{{me.dateCreated}}</p> -->
         </div>
       </div>
       <div class="col-lg-7">
         <div class="panel panel-default user-dashboard-reviews">
-            <div class="panel-body">
+            <div class="panel-body" ng-repeat="me.review in me.reviewList.contents | orderBy:'-dateCreated'">
               <div class="col-lg-2">
                 <div class="user-image">
                   <img class="img-thumbnail" src="http://placehold.it/80x80">
                 </div>
               </div>
-              <span class="user-name"><a href="biz.html"> Sea Food Island </a> </span>
+              <span class="user-name"><a href="biz.html"> {{review.contents.name}} </a> </span>
               <div class="user-rating">
                 <span id="stars" class="fa fa-star"></span>
                 <span id="stars" class="fa fa-star"></span>
                 <span id="stars" class="fa fa-star"></span>
                 <span id="stars" class="fa fa-star"></span>
                 <span id="stars" class="fa fa-star"></span>
-                <span class="date-rated"> February 14, 2015</span>
+                <span class="date-rated">{{review.contents.dateCreated}}</span>
               </div>
               <div class="col-lg-9 user-review">
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-              </div>
-            </div>
-            <div class="panel-body">
-              <div class="col-lg-2">
-                <div class="user-image">
-                  <img class="img-thumbnail" src="http://placehold.it/80x80">
-                </div>
-              </div>
-              <span class="user-name"><a href="biz.html"> Sea Food Island </a> </span>
-              <div class="user-rating">
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
-                <span id="stars" class="fa fa-star"></span>
-                <span class="date-rated"> February 14, 2015</span>
-              </div>
-              <div class="col-lg-9 user-review">
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                <p>{{review.contents.review}}</p>
               </div>
             </div>
           </div>
       </div>
-      <div class="col-lg-3">
-        <div class="panel panel-default user-friends">
-          <div class="panel-heading">Friends</div>
-          <div class="panel-body panel-friends">
-            <ul class="friends-img">
-              <li>
-               <img src="http://placehold.it/50x50">
-              </li>
-              <li>
-               <img src="http://placehold.it/50x50">
-              </li>
-              <li>
-               <img src="http://placehold.it/50x50">
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
