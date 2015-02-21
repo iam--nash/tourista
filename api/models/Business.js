@@ -41,7 +41,19 @@ module.exports = {
     photos:{
       type: 'array',
       default: []
+    },
+
+    map:{
+      latitude:{
+        type:'number',
+        required: true
+      },
+      longitude:{
+        type:'number',
+        required: true
+      }
     }
+    
   }
 };
 

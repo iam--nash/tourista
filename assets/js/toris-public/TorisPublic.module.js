@@ -9,7 +9,7 @@
  * ```
  */
 
-angular.module('TorisPublic', ['ngRoute', 'google-maps', 'toastr', 'compareTo', 'ratings']);
+angular.module('TorisPublic', ['ngRoute', 'uiGmapgoogle-maps', 'toastr', 'compareTo', 'ratings']);
 
 angular.module('TorisPublic')
 .config(function (toastrConfig) {
@@ -92,7 +92,7 @@ angular.module('TorisPublic')
       $scope.getTotalReview($routeParams.id);
       $scope.getAverageRating($routeParams.id);
 
-      //$scope.showUserProfile("54e649d408f9cd5c168ac9d8");
+      
     }]
   })
 

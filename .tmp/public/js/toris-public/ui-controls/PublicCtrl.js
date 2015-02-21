@@ -206,10 +206,12 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
           $scope.businessProfile.loading = false;
           return;
         }
+
         $scope.businessProfile.contents = data;
         $scope.businessProfile.loading = false;
 
         $scope.$apply();
+
 
         console.log("Show Single Business By Id\n\n");
         console.log(JSON.stringify(data,null,4));
