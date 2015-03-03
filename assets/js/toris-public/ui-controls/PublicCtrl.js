@@ -6,6 +6,8 @@ angular.module('TorisPublic').controller('PublicCtrl', ['$scope', '$http', '$loc
     validationErrors: []
   };
 
+  
+
   $scope.loginForm = {
     loading: false,
     topLevelErrorMessage: ''
